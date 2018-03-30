@@ -13,3 +13,5 @@ before_script:
 
 script:
 - vendor/bin/phpunit
+notifications:
+  webhooks: https://vrabe.tw/travisHook.php
