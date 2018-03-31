@@ -16,6 +16,7 @@ class CreateTaskDescriptionsTable extends Migration
         Schema::create('task_descriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->text('description');
         });
     }
 

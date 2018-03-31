@@ -26,6 +26,12 @@ class CreateTasksTable extends Migration
             $table->dateTime('start_time')->nullable();
             $table->dateTime('due_time')->nullable();
         });
+
+        Schema::table('comments', function(Blueprint $table) {
+      			$table->foreign('description_id')->references('id')->on('task_descriptions')
+      						->onDelete('cascade')
+      						->onUpdate('cascade');
+        });
     }
 
     /**
