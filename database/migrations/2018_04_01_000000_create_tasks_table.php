@@ -29,8 +29,8 @@ class CreateTasksTable extends Migration
 
         Schema::table('tasks', function(Blueprint $table) {
       			$table->foreign('description_id')->references('id')->on('task_descriptions');
-      						//->onDelete('cascade')
-      						//->onUpdate('cascade');
+      						->onDelete('cascade')
+      						->onUpdate('cascade');
         });
     }
 
