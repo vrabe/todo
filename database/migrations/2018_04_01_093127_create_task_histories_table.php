@@ -16,6 +16,15 @@ class CreateTaskHistoriesTable extends Migration
         Schema::create('task_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('task_id')->unsigned();
+            $table->string('field_name', 64);
+            $table->string('old_value', 255);
+            $table->string('new_value', 255);
+            $table->smallInteger('type');
+        });
+
+        Schema::table('task_histories', function(Blueprint $table) {
+      			$table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 
