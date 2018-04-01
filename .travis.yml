@@ -15,4 +15,5 @@ script:
 - vendor/bin/phpunit
 
 notifications:
+  email: false
   webhooks: https://vrabe.tw/travisHook.php
