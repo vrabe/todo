@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,6 @@ class Task extends Model
     */
     public function description()
     {
-        return $this->hasOne('App\TaskDescription');
+        return $this->hasOne('App\Models\TaskDescription');
     }
 }
