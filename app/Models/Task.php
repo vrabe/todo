@@ -13,4 +13,12 @@ class Task extends Model
     {
         return $this->hasOne('App\Models\TaskDescription');
     }
+
+    /**
+     * Get the histories of the task.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\TaskHistory');
+    }
 }
