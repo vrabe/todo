@@ -39,4 +39,12 @@ class Task extends Model
         return $this->belongsToMany('App\Models\Task','task_relationships','source_task_id','destination_task_id');
                       ->withPivot('relationship_type');
     }
+
+    /**
+     * The tags that belong to the task.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag','task_tag');
+    }
 }
