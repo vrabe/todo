@@ -47,4 +47,12 @@ class Task extends Model
     {
         return $this->belongsToMany('App\Models\Tag','task_tag');
     }
+
+    /**
+     * Get the project that owns the task.
+     */
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project');
+    }
 }
