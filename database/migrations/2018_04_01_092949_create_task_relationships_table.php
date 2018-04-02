@@ -28,7 +28,7 @@ class CreateTaskRelationshipsTable extends Migration
           $table->foreign('destination_task_id')->references('id')->on('tasks')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-        }
+        });
     }
 
     /**
