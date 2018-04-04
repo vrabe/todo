@@ -2,6 +2,7 @@
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Task
 use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
