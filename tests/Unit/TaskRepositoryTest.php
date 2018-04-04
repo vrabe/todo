@@ -23,16 +23,17 @@ class TaskRepositoryTest extends TestCase
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
         for ($i = 0; $i < 100; $i ++) {
-            Task::create([
-                'project_id' => floor($i / 10) ,
-                'description_id' => $i ,
-                'time_needed' => 60 * 60 * $i ,
-                'priority' => $priority[$i % 3] ,
-                'status' => $status[$i % 2] ,
-                'summary' => str_random(128) ,
-                'start_time' => date("Y-m-d H:i:s") ,
-                'due_time' => date("Y-m-d H:i:s")
-            ]);
+            $entry = new Task();
+            $entry->project_id = floor($i / 10);
+            $entry->description_id = $i;
+            $entry->time_needed = 60 * 60 * $i;
+            $entry->priority = $priority[$i % 3];
+            $entry->status = $status[$i % 2];
+            $entry->summary = str_random(128);
+            $entry->start_time = date("Y-m-d H:i:s");
+            $entry->due_time = date("Y-m-d H:i:s");
+            $entry->save();
+            $entry = null;
         }
     }
 
