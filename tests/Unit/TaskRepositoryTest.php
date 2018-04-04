@@ -1,5 +1,7 @@
 <?php
 
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
