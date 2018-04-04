@@ -2,7 +2,7 @@
 
 use App\Repositories\TaskRepository;
 
-class TaskRepository extends TestCase
+class TaskRepositoryTest extends TestCase
 {
     /**
      * @var TaskRepository
