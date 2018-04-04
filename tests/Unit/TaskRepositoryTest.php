@@ -6,6 +6,9 @@ use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
 {
+
+    use RefreshDatabase;
+
     /**
      * @var TaskRepository
      */
@@ -36,15 +39,13 @@ class TaskRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->initDatabase();
         $this->seedData();
 
-        $this->repository = new ArticleRepository();
+        $this->repository = new TaskRepository();
     }
 
     public function tearDown()
     {
-        $this->resetDatabase();
         $this->repository = null;
     }
 
