@@ -3,6 +3,7 @@
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Task;
+use App\Models\TaskDescription;
 use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
@@ -24,8 +25,10 @@ class TaskRepositoryTest extends TestCase
         $status = ['new', 'finished'];
         for ($i = 0; $i < 100; $i ++) {
             $entry = new Task();
+            $description = new TaskDescription();
             $entry->project_id = floor($i / 10);
-            //$entry->description_id = $i;
+            $description->description = 'For task ' . $i;
+            $entry->description()->save($description);
             $entry->time_needed = 60 * 60 * $i;
             $entry->priority = $priority[$i % 3];
             $entry->status = $status[$i % 2];
@@ -64,7 +67,7 @@ class TaskRepositoryTest extends TestCase
         $articles = $this->repository->getTaskById($i);
         $this->assertEquals(1, count($articles));
         $this->assertEquals(floor($i) / 10, $articles[0]->project_id);
-        //$this->assertEquals($i, $articles[0]->description_id);
+        $this->assertEquals('For task ' . $i, $articles[0]->description()->description;
         $this->assertEquals(3600 * $i, $articles[0]->time_needed);
         $this->assertEquals($priority[$i % 3], $articles[0]->priority);
         $this->assertEquals($status[$i % 2], $articles[0]->status);
