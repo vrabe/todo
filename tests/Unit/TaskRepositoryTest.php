@@ -4,6 +4,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Task;
 use App\Models\TaskDescription;
+use App\Models\Project;
 use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
@@ -23,6 +24,13 @@ class TaskRepositoryTest extends TestCase
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
+        for ($i = 0; $i < 10; $i ++) {
+            $projectEntry = new Project();
+            $projectEntry->name = 'Project ' . $i;
+            $projectEntry->status = $status[$i % 2];
+            $projectEntry->save();
+            $projectEntry = null;
+        }
         for ($i = 0; $i < 100; $i ++) {
             $entry = new Task();
             $description = new TaskDescription();
