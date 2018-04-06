@@ -36,7 +36,7 @@ class TaskRepositoryTest extends TestCase
             $description = new TaskDescription();
             $entry->project_id = floor($i / 10);
             $description->description = 'For task ' . $i;
-            $entry->description->save($description);
+            $entry->description()->save($description);
             $entry->time_needed = 60 * 60 * $i;
             $entry->priority = $priority[$i % 3];
             $entry->status = $status[$i % 2];
@@ -74,7 +74,8 @@ class TaskRepositoryTest extends TestCase
         $i = rand(0, 99);
         $article = $this->repository->getTaskById($i);
         $this->assertEquals(floor($i / 10), $article->project_id);
-        $this->assertEquals('For task ' . $i, $article->description->description);
+        $this->assertEquals(1, count($article->description()->getResults()));
+        $this->assertEquals('For task ' . $i, $article->description()->getResults()[0]->description);
         $this->assertEquals(3600 * $i, $article->time_needed);
         $this->assertEquals($priority[$i % 3], $article->priority);
         $this->assertEquals($status[$i % 2], $article->status);
