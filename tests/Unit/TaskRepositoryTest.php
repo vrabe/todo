@@ -42,7 +42,7 @@ class TaskRepositoryTest extends TestCase
             $entry->due_time = date("Y-m-d H:i:s");
             $entry->save();
             $description = new TaskDescription();
-            $description->description = 'For task ' . $i;
+            $description->text = 'For task ' . $i;
             $entry->description()->save($description);
             $entry->save();
             $entry = null;
@@ -77,7 +77,7 @@ class TaskRepositoryTest extends TestCase
         $article = $this->repository->getTaskById($i);
         $this->assertEquals(floor($i / 10), $article->project_id);
         $this->assertCount(1, $article->description()->get());
-        $this->assertEquals('For task ' . $i, $article->description()->get()[0]->description);
+        $this->assertEquals('For task ' . $i, $article->description()->get()[0]->text);
         $this->assertEquals(3600 * $i, $article->time_needed);
         $this->assertEquals($priority[$i % 3], $article->priority);
         $this->assertEquals($status[$i % 2], $article->status);
