@@ -76,14 +76,14 @@ class TaskRepositoryTest extends TestCase
         $i = rand(1, 100);
         $article = $this->repository->getTaskById($i);
         $this->assertEquals(floor($i / 10), $article->project_id);
-        $this->assertEquals(1, count($article->description()->get()));
+        $this->assertCount(1, $article->description()->get());
         $this->assertEquals('For task ' . $i, $article->description()->get()[0]->description);
         $this->assertEquals(3600 * $i, $article->time_needed);
         $this->assertEquals($priority[$i % 3], $article->priority);
         $this->assertEquals($status[$i % 2], $article->status);
         $this->assertTrue(strlen($article->summary) == 128);
-        $this->assertTrue(strtotime($article->start_time));
-        $this->assertTrue(strtotime($articles[0]->due_time));
+        $this->assertGreaterThan(time(), strtotime($article->start_time));
+        $this->assertGreaterThan(time(), strtotime($articles[0]->due_time));
     }
 }
 
