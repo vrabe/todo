@@ -83,7 +83,7 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals($status[$i % 2], $article->status);
         $this->assertTrue(strlen($article->summary) == 128);
         $this->assertGreaterThanOrEqual(strtotime($article->start_time), time());
-        $this->assertGreaterThanOrEqual(strtotime($articles[0]->due_time), time());
+        $this->assertGreaterThanOrEqual(strtotime($article->due_time), time());
     }
 }
 
