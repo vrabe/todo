@@ -24,14 +24,14 @@ class TaskRepositoryTest extends TestCase
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
-        for ($i = 0; $i < 10; $i ++) {
+        for ($i = 1; $i <= 10; $i ++) {
             $projectEntry = new Project();
             $projectEntry->name = 'Project ' . $i;
             $projectEntry->status = $status[$i % 2];
             $projectEntry->save();
             $projectEntry = null;
         }
-        for ($i = 0; $i < 100; $i ++) {
+        for ($i = 1; $i <= 100; $i ++) {
             $entry = new Task();
             $entry->project_id = floor($i / 10);
             $entry->time_needed = 60 * 60 * $i;
@@ -73,7 +73,7 @@ class TaskRepositoryTest extends TestCase
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
-        $i = rand(0, 99);
+        $i = rand(1, 100);
         $article = $this->repository->getTaskById($i);
         $this->assertEquals(floor($i / 10), $article->project_id);
         $this->assertEquals(1, count($article->description()->get()));
