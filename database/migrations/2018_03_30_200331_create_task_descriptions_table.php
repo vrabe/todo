@@ -17,6 +17,13 @@ class CreateTaskDescriptionsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('description');
+            $table->integer('task_id')->unsigned()->nullable()->unique();
+        });
+
+        Schema::table('tasks', function(Blueprint $table) {
+  			$table->foreign('task_id')->references('id')->on('tasks')
+  						->onDelete('cascade')
+  						->onUpdate('cascade');
         });
     }
 
