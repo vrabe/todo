@@ -33,9 +33,8 @@ class TaskRepositoryTest extends TestCase
         }
         for ($i = 0; $i < 100; $i ++) {
             $entry = new Task();
-            $description = new TaskDescription();
+
             $entry->project_id = floor($i / 10);
-            $description->description = 'For task ' . $i;
             $entry->description()->save($description);
             $entry->time_needed = 60 * 60 * $i;
             $entry->priority = $priority[$i % 3];
@@ -44,7 +43,12 @@ class TaskRepositoryTest extends TestCase
             $entry->start_time = date("Y-m-d H:i:s");
             $entry->due_time = date("Y-m-d H:i:s");
             $entry->save();
+            $description = new TaskDescription();
+            $description->description = 'For task ' . $i;
+            $entry->description()->save($description);
+            $entry->save();
             $entry = null;
+            $description = null;
         }
     }
 
