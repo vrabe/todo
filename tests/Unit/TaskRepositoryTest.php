@@ -45,7 +45,8 @@ class TaskRepositoryTest extends TestCase
             $entry->save();
             $description = new TaskDescription();
             $description->description = 'For task ' . $i;
-            $entry->description()->save($description);
+            $description->save();
+            $entry->description()->associate($description);
             $entry->save();
             $entry = null;
             $description = null;
