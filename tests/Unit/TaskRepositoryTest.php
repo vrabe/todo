@@ -33,9 +33,7 @@ class TaskRepositoryTest extends TestCase
         }
         for ($i = 0; $i < 100; $i ++) {
             $entry = new Task();
-
             $entry->project_id = floor($i / 10);
-            $entry->description()->save($description);
             $entry->time_needed = 60 * 60 * $i;
             $entry->priority = $priority[$i % 3];
             $entry->status = $status[$i % 2];
