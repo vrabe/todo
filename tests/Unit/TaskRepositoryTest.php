@@ -1,4 +1,4 @@
-<?php
+$article<?php
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -64,15 +64,14 @@ class TaskRepositoryTest extends TestCase
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
         $i = rand(0, 99);
-        $articles = $this->repository->getTaskById($i);
-        $this->assertEquals(1, count($articles));
-        $this->assertEquals(floor($i) / 10, $articles[0]->project_id);
-        $this->assertEquals('For task ' . $i, $articles[0]->description()->description);
-        $this->assertEquals(3600 * $i, $articles[0]->time_needed);
-        $this->assertEquals($priority[$i % 3], $articles[0]->priority);
-        $this->assertEquals($status[$i % 2], $articles[0]->status);
-        $this->assertTrue(strlen($articles[0]->summary) == 128);
-        $this->assertTrue(strtotime($articles[0]->start_time));
+        $article = $this->repository->getTaskById($i);
+        $this->assertEquals(floor($i) / 10, $article->project_id);
+        $this->assertEquals('For task ' . $i, $article->description()->description);
+        $this->assertEquals(3600 * $i, $article->time_needed);
+        $this->assertEquals($priority[$i % 3], $article->priority);
+        $this->assertEquals($status[$i % 2], $article->status);
+        $this->assertTrue(strlen($article->summary) == 128);
+        $this->assertTrue(strtotime($article->start_time));
         $this->assertTrue(strtotime($articles[0]->due_time));
     }
 }
