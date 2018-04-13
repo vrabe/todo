@@ -94,7 +94,7 @@ class TaskRepositoryTest extends TestCase
     public function testCreateTask()
     {
         //case 1: all fields are filled.
-        $now = time();
+        $now = date("Y-m-d H:i:s");
         $task1 = ['project_id' => 10,
                   'time_needed' => 1000,
                   'priority' => 'high',
@@ -110,8 +110,8 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals('high', $returnedTask1->priority);
         $this->assertEquals('new', $returnedTask1->status);
         $this->assertEquals('a summary', $returnedTask1->summary);
-        $this->assertEquals(strtotime($returnedTask1->start_time), $now);
-        $this->assertEquals(strtotime($returnedTask1->due_time), $now);
+        $this->assertEquals($returnedTask1->start_time, $now);
+        $this->assertEquals($returnedTask1->due_time, $now);
     }
 }
 
