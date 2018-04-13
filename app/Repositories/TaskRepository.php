@@ -24,7 +24,7 @@ class TaskRepository
      * @return mixed
      */
     public function createTask(array $data) {
-        
+        Task::create($data);
     }
 }
 
