@@ -10,11 +10,21 @@ class TaskRepository
      * Get a task by its id.
      *
      * @param $id task id
-     * @return App\Models\Task the task
+     * @return mixed the task
      */
     public function getTaskById($id)
     {
         return Task::where('id', $id)->first();
+    }
+
+    /**
+     * Create a task.
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function createTask(array $data) {
+        
     }
 }
 

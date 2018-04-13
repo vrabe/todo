@@ -85,6 +85,34 @@ class TaskRepositoryTest extends TestCase
         $this->assertGreaterThanOrEqual(strtotime($article->start_time), time());
         $this->assertGreaterThanOrEqual(strtotime($article->due_time), time());
     }
+
+    /**
+     * A  test about createTask method.
+     *
+     * @return void
+     */
+    public function testCreateTask()
+    {
+        //case 1: all fields are filled.
+        $now = time();
+        $task1 = ['project_id' => 10,
+                  'time_needed' => 1000,
+                  'priority' => 'high',
+                  'status' => 'new',
+                  'summary' => 'a summary',
+                  'start_time' => $now,
+                  'due_time' => $now];
+        $this->repository->createTask($task1);
+        $returnedTask1 = $this->repository->getTaskById(101);
+        $this->assertEquals(10, $returnedTask1->project_id);
+        $this->assertCount(1, $returnedTask1->description()->get());
+        $this->assertEquals(1000, $returnedTask1->time_needed);
+        $this->assertEquals('high', $returnedTask1->priority);
+        $this->assertEquals('new', $returnedTask1->status);
+        $this->assertEquals('a summary', $returnedTask1->summary);
+        $this->assertEquals(strtotime($returnedTask1->start_time), $now);
+        $this->assertEquals(strtotime($returnedTask1->due_time), $now);
+    }
 }
 
 ?>

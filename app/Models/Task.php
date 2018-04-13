@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['project_id', 'time_needed', 'priority', 'status', 'summary', 'start_time', 'due_time'];
+    /**
     * Get the description record associated with the task.
     */
     public function description()
