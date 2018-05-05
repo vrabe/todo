@@ -101,11 +101,14 @@ class TaskRepositoryTest extends TestCase
                   'status' => 'new',
                   'summary' => 'a summary',
                   'start_time' => $now,
-                  'due_time' => $now];
+                  'due_time' => $now,
+                  'description' => 'description = ='
+                ];
         $this->repository->createTask($task1);
         $returnedTask1 = $this->repository->getTaskById(201); // 100(1st setup) + 100(2nd setup) + 1
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
+        $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
         $this->assertEquals(1000, $returnedTask1->time_needed);
         $this->assertEquals('high', $returnedTask1->priority);
         $this->assertEquals('new', $returnedTask1->status);

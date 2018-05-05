@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Task;
+use App\Models\TaskDescription;
 
 class TaskRepository
 {
@@ -24,7 +25,13 @@ class TaskRepository
      * @return mixed
      */
     public function createTask(array $data) {
-        Task::create($data);
+        $task = Task::create($data);
+        if(array_key_exists('description', $data)){
+            $description = new TaskDescription();
+            $description->text = $data['description'];
+            $task->description()->save($description);
+            $task->save();
+        }
     }
 }
 
