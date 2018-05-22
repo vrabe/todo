@@ -128,7 +128,28 @@ class TaskRepositoryTest extends TestCase
      */
      public function testUpdateTaskById()
      {
-
+         //case 1: update a task which description is filled.
+         $now = date("Y-m-d H:i:s");
+         $task1_fixed = ['project_id' => 5,
+                        'time_needed' => 100,
+                        'priority' => 'medium',
+                        'status' => 'finished',
+                        'summary' => 'a summary Mk.2',
+                        'start_time' => $now,
+                        'due_time' => $now,
+                        'description' => 'description'
+                 ];
+         $this->repository->updateTaskById($task1_fixed);
+         $returnedTask1 = $this->repository->getTaskById(101);
+         $this->assertEquals(5, $returnedTask1->project_id);
+         $this->assertCount(1, $returnedTask1->description()->get());
+         $this->assertEquals('description', $returnedTask1->description()->get()[0]->text);
+         $this->assertEquals(100, $returnedTask1->time_needed);
+         $this->assertEquals('medium', $returnedTask1->priority);
+         $this->assertEquals('finished', $returnedTask1->status);
+         $this->assertEquals('a summary Mk.2', $returnedTask1->summary);
+         $this->assertEquals($returnedTask1->start_time, $now);
+         $this->assertEquals($returnedTask1->due_time, $now);
      }
 }
 
