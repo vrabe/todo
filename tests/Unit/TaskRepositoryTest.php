@@ -55,9 +55,9 @@ class TaskRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        if(static::isSetUp == false){
+        if(static::$isSetUp == false){
             $this->seedData();
-            static::isSetUp = true;
+            static::$isSetUp = true;
         }
 
         $this->repository = new TaskRepository();
