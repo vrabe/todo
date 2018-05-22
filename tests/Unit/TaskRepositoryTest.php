@@ -109,7 +109,7 @@ class TaskRepositoryTest extends TestCase
                   'description' => 'description = ='
                 ];
         $this->repository->createTask($task1);
-        $returnedTask1 = $this->repository->getTaskById(201); // 100(1st setup) + 100(2nd setup) + 1
+        $returnedTask1 = $this->repository->getTaskById(101);
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
         $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
