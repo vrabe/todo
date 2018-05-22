@@ -16,7 +16,7 @@ class TaskRepositoryTest extends TestCase
      * @var TaskRepository
      */
     protected $repository = null;
-    private $isSetUp = false;
+    protected static $isSetUp = false;
 
     /**
      * add 100 seed tasks
@@ -55,9 +55,9 @@ class TaskRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        if($this->isSetUp == false){
+        if(static::isSetUp == false){
             $this->seedData();
-            $this->isSetUp = true;
+            static::isSetUp = true;
         }
 
         $this->repository = new TaskRepository();
