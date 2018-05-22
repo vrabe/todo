@@ -16,11 +16,12 @@ class TaskRepositoryTest extends TestCase
      * @var TaskRepository
      */
     protected $repository = null;
+    private $isSetUp = false;
 
     /**
      * add 100 seed tasks
      */
-    private static function seedData()
+    protected function seedData()
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
@@ -50,16 +51,15 @@ class TaskRepositoryTest extends TestCase
         }
     }
 
-    public static function setUpBeforeClass()
-    {
-        parent::setUpBeforeClass();
-
-        self::seedData();
-
-    }
-
     public function setUp()
     {
+        parent::setUp();
+
+        if($this->isSetUp == false){
+            $this->seedData();
+            $this->isSetUp = true;
+        }
+
         $this->repository = new TaskRepository();
     }
 
@@ -109,7 +109,7 @@ class TaskRepositoryTest extends TestCase
                   'description' => 'description = ='
                 ];
         $this->repository->createTask($task1);
-        $returnedTask1 = $this->repository->getTaskById(101);
+        $returnedTask1 = $this->repository->getTaskById(201); // 100(1st setup) + 100(2nd setup) + 1
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
         $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
