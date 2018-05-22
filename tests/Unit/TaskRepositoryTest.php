@@ -50,16 +50,16 @@ class TaskRepositoryTest extends TestCase
         }
     }
 
-    public function setUp()
+    public function setUpBeforeClass()
     {
-        parent::setUp();
+        parent::setUpBeforeClass();
 
         $this->seedData();
 
         $this->repository = new TaskRepository();
     }
 
-    public function tearDown()
+    public function tearDownAfterClass()
     {
         $this->repository = null;
     }
@@ -105,7 +105,7 @@ class TaskRepositoryTest extends TestCase
                   'description' => 'description = ='
                 ];
         $this->repository->createTask($task1);
-        $returnedTask1 = $this->repository->getTaskById(201); // 100(1st setup) + 100(2nd setup) + 1
+        $returnedTask1 = $this->repository->getTaskById(101); 
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
         $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
@@ -116,6 +116,16 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals($returnedTask1->start_time, $now);
         $this->assertEquals($returnedTask1->due_time, $now);
     }
+
+    /**
+     * A  test about updateTaskById method.
+     *
+     * @return void
+     */
+     public function testUpdateTaskById()
+     {
+
+     }
 }
 
 ?>
