@@ -20,7 +20,7 @@ class TaskRepositoryTest extends TestCase
     /**
      * add 100 seed tasks
      */
-    public static function seedData()
+    private static function seedData()
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
@@ -54,8 +54,8 @@ class TaskRepositoryTest extends TestCase
     {
         parent::setUpBeforeClass();
 
-        TaskRepositoryTest::seedData();
-        
+        self::seedData();
+
     }
 
     public function setUp()
