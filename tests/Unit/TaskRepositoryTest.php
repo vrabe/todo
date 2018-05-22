@@ -50,7 +50,7 @@ class TaskRepositoryTest extends TestCase
         }
     }
 
-    public function setUpBeforeClass()
+    public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
 
@@ -59,7 +59,7 @@ class TaskRepositoryTest extends TestCase
         $this->repository = new TaskRepository();
     }
 
-    public function tearDownAfterClass()
+    public static function tearDownAfterClass()
     {
         $this->repository = null;
     }
@@ -105,7 +105,7 @@ class TaskRepositoryTest extends TestCase
                   'description' => 'description = ='
                 ];
         $this->repository->createTask($task1);
-        $returnedTask1 = $this->repository->getTaskById(101); 
+        $returnedTask1 = $this->repository->getTaskById(101);
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
         $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
