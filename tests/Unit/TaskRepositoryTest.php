@@ -161,6 +161,7 @@ class TaskRepositoryTest extends TestCase
     /**
      * A  test about updateTaskById method.
      *
+     * @depends testCreateTask
      * @return void
      */
      public function testUpdateTaskById()
