@@ -25,12 +25,36 @@ class TaskRepository
      * @return mixed
      */
     public function createTask(array $data) {
-        $task = Task::create($data);
         if(array_key_exists('description', $data)){
+            $descriptionText = $data['description'];
+            unset($data['description']);
+            $task = Task::create($data);
             $description = new TaskDescription();
-            $description->text = $data['description'];
+            $description->text = $descriptionText;
             $task->description()->save($description);
             $task->save();
+        }else{
+            $task = Task::create($data);
+        }
+    }
+
+    /**
+     * Update a task by its id.
+     *
+     * @param $id task id
+     * @return mixed the task
+     */
+    public function updateTaskById($id)
+        if(array_key_exists('description', $data)){
+            $descriptionText = $data['description'];
+            unset($data['description']);
+            $task = Task::where('id', $id)->update($data);
+            $description = new TaskDescription();
+            $description->text = $descriptionText;
+            $task->description()->save($description);
+            $task->save();
+        }else{
+            $task = Task::where('id', $id)->update($data);
         }
     }
 }
