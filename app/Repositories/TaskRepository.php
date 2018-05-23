@@ -44,7 +44,7 @@ class TaskRepository
      * @param $id task id
      * @return mixed the task
      */
-    public function updateTaskById($id)
+    public function updateTaskById($id, $data)
     {
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
