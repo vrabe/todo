@@ -119,6 +119,43 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals('a summary', $returnedTask1->summary);
         $this->assertEquals($returnedTask1->start_time, $now);
         $this->assertEquals($returnedTask1->due_time, $now);
+
+        //case 2: all fields without description are filled.
+        $task2 = ['project_id' => 10,
+                  'time_needed' => 1000,
+                  'priority' => 'high',
+                  'status' => 'new',
+                  'summary' => 'a summary',
+                  'start_time' => $now,
+                  'due_time' => $now
+                ];
+        $this->repository->createTask($task2);
+        $returnedTask2 = $this->repository->getTaskById(102);
+        $this->assertEquals(10, $returnedTask2->project_id);
+        $this->assertCount(0, $returnedTask2->description()->get());
+        $this->assertEquals(1000, $returnedTask2->time_needed);
+        $this->assertEquals('high', $returnedTask2->priority);
+        $this->assertEquals('new', $returnedTask2->status);
+        $this->assertEquals('a summary', $returnedTask2->summary);
+        $this->assertEquals($returnedTask2->start_time, $now);
+        $this->assertEquals($returnedTask2->due_time, $now);
+
+        //case 3: only necessary fields
+        $task3 = ['project_id' => 10,
+                  'priority' => 'high',
+                  'status' => 'new',
+                  'summary' => 'a summary'
+                ];
+        $this->repository->createTask($task3);
+        $returnedTask3 = $this->repository->getTaskById(103);
+        $this->assertEquals(10, $returnedTask3->project_id);
+        $this->assertCount(0, $returnedTask3->description()->get());
+        $this->assertNull($returnedTask3->time_needed);
+        $this->assertEquals('high', $returnedTask3->priority);
+        $this->assertEquals('new', $returnedTask3->status);
+        $this->assertEquals('a summary', $returnedTask3->summary);
+        $this->assertNull($returnedTask3->start_time);
+        $this->assertNull($returnedTask3->due_time);
     }
 
     /**
@@ -150,6 +187,28 @@ class TaskRepositoryTest extends TestCase
          $this->assertEquals('a summary Mk.2', $returnedTask1->summary);
          $this->assertEquals($returnedTask1->start_time, $now);
          $this->assertEquals($returnedTask1->due_time, $now);
+
+         //case 2: update a task which description is not filled.
+         $task2_fixed = ['project_id' => 5,
+                        'time_needed' => 100,
+                        'priority' => 'medium',
+                        'status' => 'finished',
+                        'summary' => 'a summary Mk.2',
+                        'start_time' => $now,
+                        'due_time' => $now,
+                        'description' => 'description'
+                 ];
+         $this->repository->updateTaskById($task2_fixed);
+         $returnedTask2 = $this->repository->getTaskById(102);
+         $this->assertEquals(5, $returnedTask2->project_id);
+         $this->assertCount(1, $returnedTask2->description()->get());
+         $this->assertEquals('description', $returnedTask2->description()->get()[0]->text);
+         $this->assertEquals(100, $returnedTask2->time_needed);
+         $this->assertEquals('medium', $returnedTask2->priority);
+         $this->assertEquals('finished', $returnedTask2->status);
+         $this->assertEquals('a summary Mk.2', $returnedTask2->summary);
+         $this->assertEquals($returnedTask2->start_time, $now);
+         $this->assertEquals($returnedTask2->due_time, $now);
      }
 }
 
