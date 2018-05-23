@@ -176,7 +176,7 @@ class TaskRepositoryTest extends TestCase
                         'due_time' => $now,
                         'description' => 'description'
                  ];
-         $this->repository->updateTaskById($task1_fixed);
+         $this->repository->updateTaskById(101, $task1_fixed);
          $returnedTask1 = $this->repository->getTaskById(101);
          $this->assertEquals(5, $returnedTask1->project_id);
          $this->assertCount(1, $returnedTask1->description()->get());
@@ -198,7 +198,7 @@ class TaskRepositoryTest extends TestCase
                         'due_time' => $now,
                         'description' => 'description'
                  ];
-         $this->repository->updateTaskById($task2_fixed);
+         $this->repository->updateTaskById(102, $task2_fixed);
          $returnedTask2 = $this->repository->getTaskById(102);
          $this->assertEquals(5, $returnedTask2->project_id);
          $this->assertCount(1, $returnedTask2->description()->get());
