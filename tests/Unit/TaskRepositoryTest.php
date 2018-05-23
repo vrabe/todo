@@ -177,16 +177,6 @@ class TaskRepositoryTest extends TestCase
                         'description' => 'description'
                  ];
          $this->repository->updateTaskById(101, $task1_fixed);
-         $returnedTask1 = $this->repository->getTaskById(101);
-         $this->assertEquals(5, $returnedTask1->project_id);
-         $this->assertCount(1, $returnedTask1->description()->get());
-         $this->assertEquals('description', $returnedTask1->description()->get()[0]->text);
-         $this->assertEquals(100, $returnedTask1->time_needed);
-         $this->assertEquals('medium', $returnedTask1->priority);
-         $this->assertEquals('finished', $returnedTask1->status);
-         $this->assertEquals('a summary Mk.2', $returnedTask1->summary);
-         $this->assertEquals($returnedTask1->start_time, $now);
-         $this->assertEquals($returnedTask1->due_time, $now);
 
          //case 2: update a task which description is not filled.
          $task2_fixed = ['project_id' => 5,
@@ -199,6 +189,19 @@ class TaskRepositoryTest extends TestCase
                         'description' => 'description'
                  ];
          $this->repository->updateTaskById(102, $task2_fixed);
+
+         //case1 test
+         $returnedTask1 = $this->repository->getTaskById(101);
+         $this->assertEquals(5, $returnedTask1->project_id);
+         $this->assertCount(1, $returnedTask1->description()->get());
+         $this->assertEquals('description', $returnedTask1->description()->get()[0]->text);
+         $this->assertEquals(100, $returnedTask1->time_needed);
+         $this->assertEquals('medium', $returnedTask1->priority);
+         $this->assertEquals('finished', $returnedTask1->status);
+         $this->assertEquals('a summary Mk.2', $returnedTask1->summary);
+         $this->assertEquals($returnedTask1->start_time, $now);
+         $this->assertEquals($returnedTask1->due_time, $now);
+         //case2 test
          $returnedTask2 = $this->repository->getTaskById(102);
          $this->assertEquals(5, $returnedTask2->project_id);
          $this->assertCount(1, $returnedTask2->description()->get());
