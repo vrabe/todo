@@ -45,6 +45,7 @@ class TaskRepository
      * @return mixed the task
      */
     public function updateTaskById($id)
+    {
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
             unset($data['description']);
