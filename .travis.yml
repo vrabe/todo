@@ -14,9 +14,6 @@ before_script:
 script:
 - vendor/bin/phpunit
 
-after_script:
-    - mysql -e 'show engine innodb status\G;'
-
 notifications:
   email: false
   webhooks: https://vrabe.tw/travisHook.php
