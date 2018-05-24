@@ -54,8 +54,9 @@ class TaskRepository
                 $description = new TaskDescription();
                 $description->text = $descriptionText;
                 $task->description()->save($description);
+            }else{
+                $task->description()->update(['text' => $description]);
             }
-            $task->description()->update(['text' => $description]);
         }else{
             Task::find($id)->update($data);
         }
