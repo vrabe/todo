@@ -57,15 +57,13 @@ class TaskRepositoryTest extends TestCase
 
         if(static::$isSetUp == false){
             $this->seedData();
+            $this->repository = new TaskRepository();
             static::$isSetUp = true;
         }
-
-        $this->repository = new TaskRepository();
     }
 
     public function tearDown()
     {
-        $this->repository = null;
     }
 
     /**

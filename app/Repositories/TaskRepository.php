@@ -48,7 +48,7 @@ class TaskRepository
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
             unset($data['description']);
-            $task = Task::where('id', $id);
+            $task = Task::find($id);
             $task->update($data);
             if($task->description === null){
                 $description = new TaskDescription();
@@ -57,7 +57,7 @@ class TaskRepository
             }
             $task->description()->update(['text' => $description]);
         }else{
-            Task::where('id', $id)->update($data);
+            Task::find($id)->update($data);
         }
     }
 }
