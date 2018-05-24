@@ -165,6 +165,32 @@ class TaskRepositoryTest extends TestCase
      */
      public function testUpdateTaskById()
      {
+         $now = date("Y-m-d H:i:s");
+         $task1 = ['project_id' => 10,
+                   'time_needed' => 1000,
+                   'priority' => 'high',
+                   'status' => 'new',
+                   'summary' => 'a summary',
+                   'start_time' => $now,
+                   'due_time' => $now,
+                   'description' => 'description = ='
+                 ];
+         $task2 = ['project_id' => 10,
+                   'time_needed' => 1000,
+                   'priority' => 'high',
+                   'status' => 'new',
+                   'summary' => 'a summary',
+                   'start_time' => $now,
+                   'due_time' => $now
+                 ];
+         $task3 = ['project_id' => 10,
+                   'priority' => 'high',
+                   'status' => 'new',
+                   'summary' => 'a summary'
+                 ];
+         $this->repository->createTask($task1);
+         $this->repository->createTask($task2);
+         $this->repository->createTask($task3);
          //case 1: update a task which description is filled.
          $now = date("Y-m-d H:i:s");
          $task1_fixed = ['project_id' => 5,
@@ -177,7 +203,7 @@ class TaskRepositoryTest extends TestCase
                         'description' => 'description'
                  ];
          $this->repository->updateTaskById(101, $task1_fixed);
-         $returnedTask1 = $this->repository->getTaskById(101);
+         $returnedTask1 = $this->repository->getTaskById(104);
          $this->assertEquals(5, $returnedTask1->project_id);
          $this->assertCount(1, $returnedTask1->description()->get());
          $this->assertEquals('description', $returnedTask1->description()->get()[0]->text);
@@ -199,7 +225,7 @@ class TaskRepositoryTest extends TestCase
                         'description' => 'description'
                  ];
          $this->repository->updateTaskById(102, $task2_fixed);
-         $returnedTask2 = $this->repository->getTaskById(102);
+         $returnedTask2 = $this->repository->getTaskById(105);
          $this->assertEquals(5, $returnedTask2->project_id);
          $this->assertCount(1, $returnedTask2->description()->get());
          $this->assertEquals('description', $returnedTask2->description()->get()[0]->text);
