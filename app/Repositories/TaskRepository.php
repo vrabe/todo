@@ -32,9 +32,8 @@ class TaskRepository
             $description = new TaskDescription();
             $description->text = $descriptionText;
             $task->description()->save($description);
-            $task->save();
         }else{
-            $task = Task::create($data);
+            Task::create($data);
         }
     }
 
@@ -49,13 +48,16 @@ class TaskRepository
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
             unset($data['description']);
-            $task = Task::where('id', $id)->update($data);
-            $description = new TaskDescription();
-            $description->text = $descriptionText;
-            $task->description()->save($description);
-            $task->save();
+            $task = Task::where('id', $id);
+            $task->update($data);
+            if($task->description === null){
+                $description = new TaskDescription();
+                $description->text = $descriptionText;
+                $task->description()->save($description);
+            }
+            $task->description()->update(['text' => $description]);
         }else{
-            $task = Task::where('id', $id)->update($data);
+            Task::where('id', $id)->update($data);
         }
     }
 }
