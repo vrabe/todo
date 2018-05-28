@@ -56,7 +56,8 @@ class TaskRepository
                 $task->description()->update(['text' => $descriptionText]);
             }
         }else{
-            Task::find($id)->update($data);
+            $task = Task::find($id);
+            $task->update($data);
             if($task->description !== null){
                 $task->description()->delete();
             }
