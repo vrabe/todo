@@ -71,7 +71,7 @@ class TaskRepository
      */
     public function deleteTaskById($id)
     {
-
+        Task::destroy($id);
     }
 }
 
