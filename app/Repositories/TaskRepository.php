@@ -22,7 +22,6 @@ class TaskRepository
      * Create a task.
      *
      * @param array $data
-     * @return mixed
      */
     public function createTask(array $data) {
         if(array_key_exists('description', $data)){
@@ -41,7 +40,6 @@ class TaskRepository
      * Update a task by its id.
      *
      * @param $id task id
-     * @return mixed the task
      */
     public function updateTaskById($id, $data)
     {
@@ -60,6 +58,16 @@ class TaskRepository
         }else{
             Task::find($id)->update($data);
         }
+    }
+
+    /**
+     * Delete a task by its id.
+     *
+     * @param $id task id
+     */
+    public function deleteTaskById($id)
+    {
+
     }
 }
 

@@ -54,11 +54,6 @@ class TaskRepositoryTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
-        if(static::$isSetUp == false){
-            $this->seedData();
-            static::$isSetUp = true;
-        }
         $this->repository = new TaskRepository();
     }
 
@@ -74,6 +69,7 @@ class TaskRepositoryTest extends TestCase
      */
     public function testGetTaskById()
     {
+        $this->seedData();
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
         $i = rand(1, 100);
@@ -87,6 +83,19 @@ class TaskRepositoryTest extends TestCase
         $this->assertTrue(strlen($article->summary) == 128);
         $this->assertGreaterThanOrEqual(strtotime($article->start_time), time());
         $this->assertGreaterThanOrEqual(strtotime($article->due_time), time());
+    }
+
+    /**
+     * A  test about deleteTaskById method.
+     *
+     * @return void
+     */
+    public function testGetTaskById()
+    {
+        $this->seedData();
+        $i = rand(101, 200);
+        $article = $this->repository->deleteTaskById($i);
+        $this->assertTrue(true);
     }
 
     /**
@@ -108,7 +117,7 @@ class TaskRepositoryTest extends TestCase
                   'description' => 'description = ='
                 ];
         $this->repository->createTask($task1);
-        $returnedTask1 = $this->repository->getTaskById(101);
+        $returnedTask1 = $this->repository->getTaskById(201);
         $this->assertEquals(10, $returnedTask1->project_id);
         $this->assertCount(1, $returnedTask1->description()->get());
         $this->assertEquals('description = =', $returnedTask1->description()->get()[0]->text);
@@ -129,7 +138,7 @@ class TaskRepositoryTest extends TestCase
                   'due_time' => $now
                 ];
         $this->repository->createTask($task2);
-        $returnedTask2 = $this->repository->getTaskById(102);
+        $returnedTask2 = $this->repository->getTaskById(202);
         $this->assertEquals(10, $returnedTask2->project_id);
         $this->assertCount(0, $returnedTask2->description()->get());
         $this->assertEquals(1000, $returnedTask2->time_needed);
@@ -146,7 +155,7 @@ class TaskRepositoryTest extends TestCase
                   'summary' => 'a summary'
                 ];
         $this->repository->createTask($task3);
-        $returnedTask3 = $this->repository->getTaskById(103);
+        $returnedTask3 = $this->repository->getTaskById(203);
         $this->assertEquals(10, $returnedTask3->project_id);
         $this->assertCount(0, $returnedTask3->description()->get());
         $this->assertNull($returnedTask3->time_needed);
@@ -202,8 +211,8 @@ class TaskRepositoryTest extends TestCase
                         'due_time' => $now,
                         'description' => 'description'
                  ];
-         $this->repository->updateTaskById(104, $task1_fixed);
-         $returnedTask1 = $this->repository->getTaskById(104);
+         $this->repository->updateTaskById(204, $task1_fixed);
+         $returnedTask1 = $this->repository->getTaskById(204);
          $this->assertEquals(5, $returnedTask1->project_id);
          $this->assertCount(1, $returnedTask1->description()->get());
          $this->assertEquals('description', $returnedTask1->description()->get()[0]->text);
@@ -224,8 +233,8 @@ class TaskRepositoryTest extends TestCase
                         'due_time' => $now,
                         'description' => 'description'
                  ];
-         $this->repository->updateTaskById(105, $task2_fixed);
-         $returnedTask2 = $this->repository->getTaskById(105);
+         $this->repository->updateTaskById(205, $task2_fixed);
+         $returnedTask2 = $this->repository->getTaskById(205);
          $this->assertEquals(5, $returnedTask2->project_id);
          $this->assertCount(1, $returnedTask2->description()->get());
          $this->assertEquals('description', $returnedTask2->description()->get()[0]->text);
