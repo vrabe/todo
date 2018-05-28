@@ -95,7 +95,7 @@ class TaskRepositoryTest extends TestCase
         $this->seedData();
         $i = rand(101, 200);
         $this->repository->deleteTaskById($i);
-        $this->assertNull(Task::where('id', $id)->first());
+        $this->assertNull(Task::where('id', $i)->first());
     }
 
     /**
