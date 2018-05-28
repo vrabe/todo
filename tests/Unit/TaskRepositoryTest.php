@@ -244,6 +244,26 @@ class TaskRepositoryTest extends TestCase
          $this->assertEquals('a summary Mk.2', $returnedTask2->summary);
          $this->assertEquals($returnedTask2->start_time, $now);
          $this->assertEquals($returnedTask2->due_time, $now);
+
+         //case 2-1: update a task to remove its description.
+         $task2_fixed = ['project_id' => 5,
+                        'time_needed' => 100,
+                        'priority' => 'medium',
+                        'status' => 'finished',
+                        'summary' => 'a summary Mk.2',
+                        'start_time' => $now,
+                        'due_time' => $now
+                 ];
+         $this->repository->updateTaskById(205, $task2_fixed);
+         $returnedTask2 = $this->repository->getTaskById(205);
+         $this->assertEquals(5, $returnedTask2->project_id);
+         $this->assertCount(0, $returnedTask2->description()->get());
+         $this->assertEquals(100, $returnedTask2->time_needed);
+         $this->assertEquals('medium', $returnedTask2->priority);
+         $this->assertEquals('finished', $returnedTask2->status);
+         $this->assertEquals('a summary Mk.2', $returnedTask2->summary);
+         $this->assertEquals($returnedTask2->start_time, $now);
+         $this->assertEquals($returnedTask2->due_time, $now);
      }
 }
 
