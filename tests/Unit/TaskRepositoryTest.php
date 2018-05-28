@@ -90,7 +90,7 @@ class TaskRepositoryTest extends TestCase
      *
      * @return void
      */
-    public function testGetTaskById()
+    public function testDeleteTaskById()
     {
         $this->seedData();
         $i = rand(101, 200);
