@@ -21,7 +21,7 @@ class CreateTaskTagTable extends Migration
         });
 
         Schema::table('task_tag', function(Blueprint $table) {
-      			$table->foreign('task_id')->references('id')->on('tasks');
+      		$table->foreign('task_id')->references('id')->on('tasks');
             $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
