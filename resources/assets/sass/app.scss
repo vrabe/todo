@@ -1,1 +1,49 @@
+@import "node_modules/bootstrap/scss/bootstrap";
 
+$blue: #0047ab;
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.project-sidebar {
+    display: flex;
+    flex-flow: column;
+    //height: 100vh;
+}
+
+.project-list {
+    flex: 1;
+    overflow-y: auto;
+    //min-height: calc(100% - 27px);
+    //max-height: calc(100% - 27px);
+    //min-height: calc(100% - 27px) !important;
+    //height: calc(100% - 27px);
+    //max-height: 200px;
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        padding: .75rem .5rem;
+    }
+}
+
+ul {
+    //overflow-y: scroll;
+    //height: calc(100% - 27px);
+    //min-height: 100px;
+}
+
+.add-project {
+    flex: 0;
+}
+
+.bg-blue {
+    background-color: lighten($blue, 30%);
+}
