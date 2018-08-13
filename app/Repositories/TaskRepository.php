@@ -7,6 +7,20 @@ use App\Models\TaskDescription;
 
 class TaskRepository
 {
+    // The task model
+    protected $model;
+
+    /**
+    * Create a new task repository instance.
+    *
+    * @param Model $task
+    * @return TaskRepository
+    */
+    public function __construct(Task $task)
+    {
+        $this->model = $task;
+    }
+
     /**
      * Get a task by its id.
      *
@@ -15,7 +29,7 @@ class TaskRepository
      */
     public function getTaskById($id)
     {
-        return Task::where('id', $id)->first();
+        return $this->model->where('id', $id)->first();
     }
 
     /**
@@ -27,12 +41,12 @@ class TaskRepository
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
             unset($data['description']);
-            $task = Task::create($data);
+            $task = $this->model->create($data);
             $description = new TaskDescription();
             $description->text = $descriptionText;
             $task->description()->save($description);
         }else{
-            Task::create($data);
+            $this->model->create($data);
         }
     }
 
@@ -46,7 +60,7 @@ class TaskRepository
         if(array_key_exists('description', $data)){
             $descriptionText = $data['description'];
             unset($data['description']);
-            $task = Task::find($id);
+            $task = $this->model->find($id);
             $task->update($data);
             if($task->description === null){
                 $description = new TaskDescription();
@@ -56,7 +70,7 @@ class TaskRepository
                 $task->description()->update(['text' => $descriptionText]);
             }
         }else{
-            $task = Task::find($id);
+            $task = $this->model->find($id);
             $task->update($data);
             if($task->description !== null){
                 $task->description()->delete();
@@ -71,7 +85,7 @@ class TaskRepository
      */
     public function deleteTaskById($id)
     {
-        Task::destroy($id);
+        $this->model->destroy($id);
     }
 }
 
