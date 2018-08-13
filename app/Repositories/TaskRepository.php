@@ -29,7 +29,7 @@ class TaskRepository
      */
     public function getTaskById($id)
     {
-        return $this->model->find($id)->first();
+        return $this->model->find($id);
     }
 
     /**
