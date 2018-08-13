@@ -54,7 +54,7 @@ class TaskRepositoryTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->repository = new TaskRepository();
+        $this->repository = new TaskRepository(new Task());
     }
 
     public function tearDown()
