@@ -4,7 +4,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Task;
 use App\Models\TaskDescription;
-use App\Models\List;
+use App\Models\Project;
 use App\Repositories\TaskRepository;
 
 class TaskRepositoryTest extends TestCase
