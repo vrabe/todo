@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class List extends Model
+class Project extends Model
 {
     /**
-     * Get the tasks belong to the list.
+     * Get the tasks belong to the project.
      */
     public function tasks()
     {

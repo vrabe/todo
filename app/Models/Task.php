@@ -55,10 +55,10 @@ class Task extends Model
     }
 
     /**
-     * Get the list that contains the task.
+     * Get the project that owns the task.
      */
-    public function list()
+    public function project()
     {
-        return $this->belongsTo('App\Models\List');
+        return $this->belongsTo('App\Models\Project');
     }
 }
