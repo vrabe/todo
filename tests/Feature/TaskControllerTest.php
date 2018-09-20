@@ -19,14 +19,14 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-    * @test
+     * @test
      * A basic test example.
      *
      * @return void
      */
     public function availablilityTest()
     {
-        $response = $this->get('/api/tasks');
-        $response->assertStatus(200);
+        $this->call('GET', '/tasks');
+        $this->assertResponseOk();
     }
 }
