@@ -19,6 +19,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
+    * @test
      * A basic test example.
      *
      * @return void
