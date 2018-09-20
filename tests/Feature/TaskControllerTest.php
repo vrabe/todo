@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskControllerTest extends TestCase
 {
+    use RefreshDatabase;
 
     public function setUp()
     {
