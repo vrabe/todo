@@ -7,9 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskControllerTest extends TestCase
 {
-    /**
-     * @var TaskController
-     */
 
     public function setUp()
     {
@@ -28,7 +25,7 @@ class TaskControllerTest extends TestCase
      */
     public function availablilityTest()
     {
-        $response = $this->call('GET', '/tasks');
+        $response = $this->get('/api/tasks');
         $response->assertStatus(200);
     }
 }
