@@ -24,4 +24,16 @@ class TaskController extends Controller
         $this->repository = $tasks;
     }
 
+    /**
+     * Show list of tasks.
+     *
+     * @param Request $request
+     *
+     * @return 
+     */
+     public function index(Request $request)
+     {
+
+     }
+
 }
