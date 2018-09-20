@@ -1,11 +1,9 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Repositories\TaskRepository;
-use App\Models\Task;
 
 class TaskControllerTest extends TestCase
 {
