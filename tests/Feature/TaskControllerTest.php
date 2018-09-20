@@ -28,8 +28,9 @@ class TaskControllerTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function availablilityTest()
     {
-        $this->assertTrue(true);
+        $this->call('GET', '/tasks');
+        $this->assertResponseOk();
     }
 }
