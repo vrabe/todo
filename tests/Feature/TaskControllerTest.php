@@ -12,17 +12,15 @@ class TaskControllerTest extends TestCase
     /**
      * @var TaskController
      */
-    protected $controller = null;
 
     public function setUp()
     {
         parent::setUp();
-        $this->controller = new TaskController(new TaskRepository(new Task()));
     }
 
     public function tearDown()
     {
-        $this->controller = null;
+
     }
 
     /**
