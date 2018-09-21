@@ -33,6 +33,16 @@ class TaskRepository
     }
 
     /**
+     * Get all tasks.
+     *
+     * @return Collection the tasks
+     */
+    public function getAllTasks()
+    {
+        return $this->model->all()->orderBy('id', 'asc');
+    }
+
+    /**
      * Create a task.
      *
      * @param array $data
