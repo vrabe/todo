@@ -98,9 +98,9 @@ class TaskRepositoryTest extends TestCase
         $this->seedData();
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
-        $i = rand(1, 100);
+        $i = rand(0, 99);
         $tasks = $this->repository->getAllTasks();
-        $this->assertEquals(($i + 100), $tasks[$i]->id);
+        $this->assertEquals(($i + 101), $tasks[$i]->id);
         $this->assertEquals(floor($i / 10), $tasks[$i]->project_id);
         $this->assertCount(1, $tasks[$i]->description()->get());
         $this->assertEquals('For task ' . $i, $tasks[$i]->description()->get()[0]->text);
