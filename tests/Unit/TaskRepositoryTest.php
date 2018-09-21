@@ -98,10 +98,10 @@ class TaskRepositoryTest extends TestCase
         $this->seedData();
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
-        $i = 101;
+        $i = 1;
         $tasks = $this->repository->getAllTasks();
         foreach ($tasks as $task) {
-            $this->assertEquals($i, $task->id);
+            $this->assertEquals(($i + 100), $task->id);
             $this->assertEquals(floor($i / 10), $task->project_id);
             $this->assertCount(1, $task->description()->get());
             $this->assertEquals('For task ' . $i, $task->description()->get()[0]->text);
