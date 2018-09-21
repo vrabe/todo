@@ -98,23 +98,18 @@ class TaskRepositoryTest extends TestCase
         $this->seedData();
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
-        $i = 1;
+        $i = rand(1, 100);
         $tasks = $this->repository->getAllTasks();
-        foreach ($tasks as $task) {
-            if(rand(1, 10) == 1){
-                $this->assertEquals(($i + 100), $task->id);
-                $this->assertEquals(floor($i / 10), $task->project_id);
-                $this->assertCount(1, $task->description()->get());
-                $this->assertEquals('For task ' . $i, $task->description()->get()[0]->text);
-                $this->assertEquals(3600 * $i, $task->time_needed);
-                $this->assertEquals($priority[$i % 3], $task->priority);
-                $this->assertEquals($status[$i % 2], $task->status);
-                $this->assertTrue(strlen($task->summary) == 128);
-                $this->assertGreaterThanOrEqual(strtotime($task->start_time), time());
-                $this->assertGreaterThanOrEqual(strtotime($task->due_time), time());
-            }
-            $i++;
-        }
+        $this->assertEquals(($i + 100), $tasks[$i]->id);
+        $this->assertEquals(floor($i / 10), $tasks[$i]->project_id);
+        $this->assertCount(1, $tasks[$i]->description()->get());
+        $this->assertEquals('For task ' . $i, $tasks[$i]->description()->get()[0]->text);
+        $this->assertEquals(3600 * $i, $tasks[$i]->time_needed);
+        $this->assertEquals($priority[$i % 3], $tasks[$i]->priority);
+        $this->assertEquals($status[$i % 2], $tasks[$i]->status);
+        $this->assertTrue(strlen($tasks[$i]->summary) == 128);
+        $this->assertGreaterThanOrEqual(strtotime($tasks[$i]->start_time), time());
+        $this->assertGreaterThanOrEqual(strtotime($tasks[$i]->due_time), time());
     }
 
     /**
