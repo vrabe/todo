@@ -39,7 +39,7 @@ class TaskRepository
      */
     public function getAllTasks()
     {
-        return $this->model->all()->orderBy('id', 'asc');
+        return $this->model->orderBy('id')->get();
     }
 
     /**
