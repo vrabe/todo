@@ -32,9 +32,20 @@ class TaskController extends Controller
      *
      * @return
      */
-     public function index(Request $request)
-     {
-         return $this->repository->getPaginated(10);
-     }
+    public function index(Request $request)
+    {
+        return $this->repository->getPaginated(10);
+    }
+
+     /**
+     * Return the task.
+     *
+     * @param  int $taskId
+     * @return \Illuminate\Http\Response
+     */
+    public function show(int $taskId)
+    {
+        return $this->repository->getTaskById($taskId);
+    }
 
 }
