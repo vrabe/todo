@@ -43,9 +43,9 @@ class TaskController extends Controller
      * @param  int $taskId
      * @return \Illuminate\Http\Response
      */
-    public function show(int $taskId)
+    public function show(int $id)
     {
-        return $this->repository->getTaskById($taskId);
+        return $this->repository->getTaskById($id);
     }
 
 }
