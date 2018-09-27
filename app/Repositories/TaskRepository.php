@@ -43,6 +43,16 @@ class TaskRepository
     }
 
     /**
+     * Get paginated tasks.
+     *
+     * @return Illuminate\Pagination\Paginator the paginated tasks
+     */
+     public function getPaginated(int $perPage = null)
+     {
+         return $this->model->orderBy('id')->paginate($perPage);
+     }
+
+    /**
      * Create a task.
      *
      * @param array $data

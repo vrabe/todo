@@ -34,7 +34,7 @@ class TaskController extends Controller
      */
      public function index(Request $request)
      {
-
+         return $this->repository->getPaginated(10);
      }
 
 }
