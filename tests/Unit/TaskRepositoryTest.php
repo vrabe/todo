@@ -16,7 +16,6 @@ class TaskRepositoryTest extends TestCase
      * @var TaskRepository
      */
     protected $repository = null;
-    protected static $isSetUp = false;
 
     /**
      * add seed tasks
