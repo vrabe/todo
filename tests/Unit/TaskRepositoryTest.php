@@ -159,10 +159,16 @@ class TaskRepositoryTest extends TestCase
      */
     public function testDeleteTaskById()
     {
-        $this->oldSeedData();
-        $i = rand(201, 300);
-        $this->repository->deleteTaskById($i);
-        $this->assertNull(Task::where('id', $i)->first());
+        $this->SeedData(99);
+        $data = $this->SeedData(1);
+        $task = $data["task"][0];
+        $this->assertDatabaseHas('tasks', [
+            'id' => $task->id
+        ]);
+        $this->repository->deleteTaskById($task->id);
+        $this->assertDatabaseMissing('tasks', [
+            'id' => $task->id
+        ]);
     }
 
     /**
