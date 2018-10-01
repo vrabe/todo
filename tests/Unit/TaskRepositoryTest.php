@@ -89,7 +89,7 @@ class TaskRepositoryTest extends TestCase
     }
 
     /**
-     * A  test about getTaskById method.
+     * A test about getTaskById method.
      *
      * @return void
      */
@@ -123,7 +123,7 @@ class TaskRepositoryTest extends TestCase
     }
 
     /**
-     * A  test about deleteTaskById method.
+     * A test about deleteTaskById method.
      *
      * @return void
      */
@@ -141,7 +141,7 @@ class TaskRepositoryTest extends TestCase
     }
 
     /**
-     * A  test about createTask method.
+     * A test about createTask method.
      *
      * @return void
      */
@@ -181,7 +181,7 @@ class TaskRepositoryTest extends TestCase
     }
 
     /**
-     * A  test about updateTaskById method.
+     * A test about updateTaskById method.
      *
      * @depends testCreateTask
      * @return void
