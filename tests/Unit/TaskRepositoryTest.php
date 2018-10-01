@@ -134,21 +134,22 @@ class TaskRepositoryTest extends TestCase
      */
     public function testGetAllTasks()
     {
-        $this->oldSeedData();
-        $priority = ['low', 'medium', 'high'];
-        $status = ['new', 'finished'];
-        $i = rand(1, 100);
-        $tasks = $this->repository->getAllTasks();
-        $this->assertEquals(($i + 100), $tasks[$i - 1]->id);
-        $this->assertEquals(floor($i / 10), $tasks[$i - 1]->project_id);
-        $this->assertCount(1, $tasks[$i - 1]->description()->get());
-        $this->assertEquals('For task ' . $i, $tasks[$i - 1]->description()->get()[0]->text);
-        $this->assertEquals(3600 * $i, $tasks[$i - 1]->time_needed);
-        $this->assertEquals($priority[$i % 3], $tasks[$i - 1]->priority);
-        $this->assertEquals($status[$i % 2], $tasks[$i - 1]->status);
-        $this->assertTrue(strlen($tasks[$i - 1]->summary) == 128);
-        $this->assertGreaterThanOrEqual(strtotime($tasks[$i - 1]->start_time), time());
-        $this->assertGreaterThanOrEqual(strtotime($tasks[$i - 1]->due_time), time());
+        $data = $this->seedData(100);
+        $tasks = $data["task"];
+        $fetchedTasks = $this->repository->getAllTasks();
+        for($i = 0 ; $i < 100 ; $i++){
+            $task = $tasks[$i];
+            $fetchedTask = $fetchedTasks[$i];
+            $this->assertEquals($fetchedTask->project_id, $task->project_id);
+            $this->assertEquals(count($fetchedTask->description()->get()), count($task->description()->get()));
+            $this->assertEquals($fetchedTask->description()->get()[0]->text, $task->description()->get()[0]->text);
+            $this->assertEquals($fetchedTask->time_needed, $task->time_needed);
+            $this->assertEquals($fetchedTask->priority, $task->priority);
+            $this->assertEquals($fetchedTask->status, $task->status);
+            $this->assertEquals($fetchedTask->summary, $task->summary);
+            $this->assertEquals($fetchedTask->start_time, $task->start_time);
+            $this->assertEquals($fetchedTask->due_time, $task->due_time);
+        }
     }
 
     /**
