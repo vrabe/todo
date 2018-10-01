@@ -56,6 +56,7 @@ class TaskRepository
      * Create a task.
      *
      * @param array $data
+     * @return Task created task
      */
     public function createTask(array $data) {
         if(array_key_exists('description', $data)){
@@ -66,8 +67,9 @@ class TaskRepository
             $description->text = $descriptionText;
             $task->description()->save($description);
         }else{
-            $this->model->create($data);
+            $task = $this->model->create($data);
         }
+        return $task;
     }
 
     /**
