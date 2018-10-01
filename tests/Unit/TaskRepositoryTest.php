@@ -114,7 +114,7 @@ class TaskRepositoryTest extends TestCase
         $task = $data["task"][0];
         $fetchedTask = $this->repository->getTaskById($data["task"][0]->id);
         $this->assertEquals($fetchedTask->project_id, $task->project_id);
-        $this->assertCount($fetchedTask->description()->get(), $task->description()->get());
+        $this->assertEquals(count($fetchedTask->description()->get()), count($task->description()->get()));
         $this->assertEquals($fetchedTask->description()->get()[0]->text, $task->description()->get()[0]->text);
         $this->assertEquals($fetchedTask->time_needed, $task->time_needed);
         $this->assertEquals($fetchedTask->priority, $task->priority);
