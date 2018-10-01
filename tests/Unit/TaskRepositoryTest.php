@@ -64,7 +64,7 @@ class TaskRepositoryTest extends TestCase
      * @param  Task  $task1
      * @param  Task  $task2
      */
-    protected function assertTaskEquals(Task task1, Task task2)
+    protected function assertTaskEquals(Task $task1, Task $task2)
     {
         $this->assertEquals($task1->project_id, $task2->project_id);
         $this->assertEquals(count($task1->description()->get()), count($task2->description()->get()));
