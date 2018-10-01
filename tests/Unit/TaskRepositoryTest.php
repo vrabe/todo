@@ -62,7 +62,7 @@ class TaskRepositoryTest extends TestCase
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
         $returnValue = array();
-        for ($i = 1; $i <= (($qty < 10) ? $qty : 10)); $i ++) {
+        for ($i = 1; $i <= (($qty < 10) ? $qty : 10); $i ++) {
             $projectEntry = new Project();
             $projectEntry->name = 'Project ' . $i;
             $projectEntry->status = $status[$i % 2];
@@ -109,6 +109,7 @@ class TaskRepositoryTest extends TestCase
      */
     public function testGetTaskById()
     {
+        $this->seedData(99);
         $data = $this->seedData(1);
         $task = $data["task"][0];
         $fetchedTask = $this->repository->getTaskById($data["task"][0]->id);
