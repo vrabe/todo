@@ -159,9 +159,8 @@ class TaskRepositoryTest extends TestCase
      */
     public function testDeleteTaskById()
     {
-        $this->SeedData(99);
-        $data = $this->SeedData(1);
-        $task = $data["task"][0];
+        $data = $this->SeedData(100);
+        $task = $data["task"][rand(0, 98)]; //if using the last task, it will cause database dead lock.
         $this->assertDatabaseHas('tasks', [
             'id' => $task->id
         ]);
