@@ -58,6 +58,25 @@ class TaskRepositoryTest extends TestCase
         return $returnValue;
     }
 
+    /**
+     * check 2 tasks are the same.
+     *
+     * @param  Task  $task1
+     * @param  Task  $task2
+     */
+    protected function assertTaskEquals(Task task1, Task task2)
+    {
+        $this->assertEquals($task1->project_id, $task2->project_id);
+        $this->assertEquals(count($task1->description()->get()), count($task2->description()->get()));
+        $this->assertEquals($task1->description()->get()[0]->text, $task2->description()->get()[0]->text);
+        $this->assertEquals($task1->time_needed, $task2->time_needed);
+        $this->assertEquals($task1->priority, $task2->priority);
+        $this->assertEquals($task1->status, $task2->status);
+        $this->assertEquals($task1->summary, $task2->summary);
+        $this->assertEquals($task1->start_time, $task2->start_time);
+        $this->assertEquals($task1->due_time, $task2->due_time);
+    }
+
     public function setUp()
     {
         parent::setUp();
@@ -80,15 +99,7 @@ class TaskRepositoryTest extends TestCase
         $data = $this->seedData(1);
         $task = $data["task"][0];
         $fetchedTask = $this->repository->getTaskById($data["task"][0]->id);
-        $this->assertEquals($fetchedTask->project_id, $task->project_id);
-        $this->assertEquals(count($fetchedTask->description()->get()), count($task->description()->get()));
-        $this->assertEquals($fetchedTask->description()->get()[0]->text, $task->description()->get()[0]->text);
-        $this->assertEquals($fetchedTask->time_needed, $task->time_needed);
-        $this->assertEquals($fetchedTask->priority, $task->priority);
-        $this->assertEquals($fetchedTask->status, $task->status);
-        $this->assertEquals($fetchedTask->summary, $task->summary);
-        $this->assertEquals($fetchedTask->start_time, $task->start_time);
-        $this->assertEquals($fetchedTask->due_time, $task->due_time);
+        $this->assertTaskEquals($fetchedTask, $task);
 
         $nullTask = $this->repository->getTaskById(0);
         $this->assertNull($nullTask);
@@ -107,15 +118,7 @@ class TaskRepositoryTest extends TestCase
         for($i = 0 ; $i < 100 ; $i++){
             $task = $tasks[$i];
             $fetchedTask = $fetchedTasks[$i];
-            $this->assertEquals($fetchedTask->project_id, $task->project_id);
-            $this->assertEquals(count($fetchedTask->description()->get()), count($task->description()->get()));
-            $this->assertEquals($fetchedTask->description()->get()[0]->text, $task->description()->get()[0]->text);
-            $this->assertEquals($fetchedTask->time_needed, $task->time_needed);
-            $this->assertEquals($fetchedTask->priority, $task->priority);
-            $this->assertEquals($fetchedTask->status, $task->status);
-            $this->assertEquals($fetchedTask->summary, $task->summary);
-            $this->assertEquals($fetchedTask->start_time, $task->start_time);
-            $this->assertEquals($fetchedTask->due_time, $task->due_time);
+            $this->assertTaskEquals($fetchedTask, $task);
         }
     }
 
