@@ -67,7 +67,8 @@ class TaskRepositoryTest extends TestCase
     {
         $this->assertEquals($task1->project_id, $task2->project_id);
         $this->assertEquals(count($task1->description()->get()), count($task2->description()->get()));
-        $this->assertEquals($task1->description()->get()[0]->text, $task2->description()->get()[0]->text);
+        if(count($task1->description()->get()) > 0)
+            $this->assertEquals($task1->description()->get()[0]->text, $task2->description()->get()[0]->text);
         $this->assertEquals($task1->time_needed, $task2->time_needed);
         $this->assertEquals($task1->priority, $task2->priority);
         $this->assertEquals($task1->status, $task2->status);
