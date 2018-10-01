@@ -21,7 +21,7 @@ class TaskRepositoryTest extends TestCase
     /**
      * add 100 seed tasks
      */
-    protected function seedData()
+    protected function oldSeedData()
     {
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
@@ -51,6 +51,46 @@ class TaskRepositoryTest extends TestCase
         }
     }
 
+    /**
+     * add seed tasks
+     *
+     * @param  int  $qty number of tasks
+     * @return array tasks and projects
+     */
+    protected function seedData(int $qty)
+    {
+        $priority = ['low', 'medium', 'high'];
+        $status = ['new', 'finished'];
+        $returnValue = array();
+        for ($i = 1; $i <= (($qty < 10) ? $qty : 10)); $i ++) {
+            $projectEntry = new Project();
+            $projectEntry->name = 'Project ' . $i;
+            $projectEntry->status = $status[$i % 2];
+            $projectEntry->save();
+            $returnValue["project"][] = $projectEntry;
+            $projectEntry = null;
+        }
+        for ($i = 1; $i <= $qty; $i ++) {
+            $entry = new Task();
+            $entry->project_id = floor($i / 10);
+            $entry->time_needed = 60 * 60 * $i;
+            $entry->priority = $priority[$i % 3];
+            $entry->status = $status[$i % 2];
+            $entry->summary = str_random(128);
+            $entry->start_time = date("Y-m-d H:i:s");
+            $entry->due_time = date("Y-m-d H:i:s");
+            $entry->save();
+            $description = new TaskDescription();
+            $description->text = 'For task ' . $i;
+            $entry->description()->save($description);
+            $entry->save();
+            $returnValue["task"][] = $entry;
+            $entry = null;
+            $description = null;
+        }
+        return $returnValue;
+    }
+
     public function setUp()
     {
         parent::setUp();
@@ -69,23 +109,21 @@ class TaskRepositoryTest extends TestCase
      */
     public function testGetTaskById()
     {
-        $this->seedData();
-        $priority = ['low', 'medium', 'high'];
-        $status = ['new', 'finished'];
-        $i = rand(1, 100);
-        $article = $this->repository->getTaskById($i);
-        $this->assertEquals(floor($i / 10), $article->project_id);
-        $this->assertCount(1, $article->description()->get());
-        $this->assertEquals('For task ' . $i, $article->description()->get()[0]->text);
-        $this->assertEquals(3600 * $i, $article->time_needed);
-        $this->assertEquals($priority[$i % 3], $article->priority);
-        $this->assertEquals($status[$i % 2], $article->status);
-        $this->assertTrue(strlen($article->summary) == 128);
-        $this->assertGreaterThanOrEqual(strtotime($article->start_time), time());
-        $this->assertGreaterThanOrEqual(strtotime($article->due_time), time());
+        $data = $this->seedData(1);
+        $task = $data["task"][0];
+        $fetchedTask = $this->repository->getTaskById($data["task"][0]->id);
+        $this->assertEquals($fetchedTask->project_id, $task->project_id);
+        $this->assertCount($fetchedTask->description()->get(), $task->description()->get());
+        $this->assertEquals($fetchedTask->description()->get()[0]->text, $task->description()->get()[0]->text);
+        $this->assertEquals($fetchedTask->time_needed, $task->time_needed);
+        $this->assertEquals($fetchedTask->priority, $task->priority);
+        $this->assertEquals($fetchedTask->status, $task->status);
+        $this->assertEquals($fetchedTask->summary, $task->summary);
+        $this->assertEquals($fetchedTask->start_time, $task->start_time);
+        $this->assertEquals($fetchedTask->due_time, $task->due_time);
 
-        $article2 = $this->repository->getTaskById(0);
-        $this->assertNull($article2);
+        $nullTask = $this->repository->getTaskById(0);
+        $this->assertNull($nullTask);
     }
 
     /**
@@ -95,7 +133,7 @@ class TaskRepositoryTest extends TestCase
      */
     public function testGetAllTasks()
     {
-        $this->seedData();
+        $this->oldSeedData();
         $priority = ['low', 'medium', 'high'];
         $status = ['new', 'finished'];
         $i = rand(1, 100);
@@ -119,7 +157,7 @@ class TaskRepositoryTest extends TestCase
      */
     public function testDeleteTaskById()
     {
-        $this->seedData();
+        $this->oldSeedData();
         $i = rand(201, 300);
         $this->repository->deleteTaskById($i);
         $this->assertNull(Task::where('id', $i)->first());
