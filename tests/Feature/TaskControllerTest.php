@@ -20,12 +20,11 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * @test
-     * A basic test example.
+     * test GET /api/tasks route and TaskController@index method.
      *
      * @return void
      */
-    public function availablilityTest()
+    public function testGetTaskRoute()
     {
         $response = $this->call('GET', '/api/tasks');
         $response->assertStatus(200);
