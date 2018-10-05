@@ -132,20 +132,20 @@ class TaskRepositoryTest extends TestCase
         $tasks = $data["task"];
         $fetchedTasks = $this->repository->getAllTasks();
         $fetchedArray = json_decode($this->repository->getPaginated(10)->toJson());
-        $this->assertEquals($fetchedArray["total"], 100);
-        $this->assertEquals($fetchedArray["per_page"], 10);
-        $this->assertEquals($fetchedArray["current_page"], 1);
-        $this->assertEquals($fetchedArray["last_page"], 10);
-        $this->assertEquals($fetchedArray["from"], 1);
-        $this->assertEquals($fetchedArray["to"], 10);
+        $this->assertEquals($fetchedArray->total, 100);
+        $this->assertEquals($fetchedArray->per_page, 10);
+        $this->assertEquals($fetchedArray->current_page, 1);
+        $this->assertEquals($fetchedArray->last_page, 10);
+        $this->assertEquals($fetchedArray->from, 1);
+        $this->assertEquals($fetchedArray->to, 10);
         $this->assertArrayHasKey("first_page_url", $fetchedArray);
         $this->assertArrayHasKey("last_page_url", $fetchedArray);
         $this->assertArrayHasKey("next_page_url", $fetchedArray);
         $this->assertArrayHasKey("prev_page_url", $fetchedArray);
         $this->assertArrayHasKey("path", $fetchedArray);
-        $this->assertEquals($fetchedArray["total"], 100);
+        $this->assertEquals($fetchedArray->total, 100);
         for($i = 0 ; $i < 10 ; $i++){
-            $task = $fetchedArray["data"][$i];
+            $task = $fetchedArray->data[$i];
             $fetchedTask = $fetchedTasks[$i];
             $this->assertEquals($task->id, $fetchedTask->id);
             $this->assertEquals($task->project_id, $fetchedTask->project_id);
