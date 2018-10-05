@@ -147,14 +147,15 @@ class TaskRepositoryTest extends TestCase
         for($i = 0 ; $i < 10 ; $i++){
             $task = $fetchedArray["data"][$i];
             $fetchedTask = $fetchedTasks[$i];
-            $this->assertEquals($task["id"], $fetchedTask->project_id);
-            //$this->assertEquals($task["description"], $fetchedTask->description()->get()[0]->text); //haven not implement
-            $this->assertEquals($task["time_needed"], $fetchedTask->time_needed);
-            $this->assertEquals($task["priority"], $fetchedTask->priority);
-            $this->assertEquals($task["status"], $fetchedTask->status);
-            $this->assertEquals($task["summary"], $fetchedTask->summary);
-            $this->assertEquals($task["start_time"], $fetchedTask->start_time);
-            $this->assertEquals($task["due_time"], $fetchedTask->due_time);
+            $this->assertEquals($task->id, $fetchedTask->id);
+            $this->assertEquals($task->project_id, $fetchedTask->project_id);
+            //$this->assertEquals($task->description, $fetchedTask->description()->get()[0]->text); //haven not implement
+            $this->assertEquals($task->time_needed, $fetchedTask->time_needed);
+            $this->assertEquals($task->priority, $fetchedTask->priority);
+            $this->assertEquals($task->status, $fetchedTask->status);
+            $this->assertEquals($task->summary, $fetchedTask->summary);
+            $this->assertEquals($task->start_time, $fetchedTask->start_time);
+            $this->assertEquals($task->due_time, $fetchedTask->due_time);
         }
     }
 
