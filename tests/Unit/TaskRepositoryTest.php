@@ -138,11 +138,11 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals($fetchedArray->last_page, 10);
         $this->assertEquals($fetchedArray->from, 1);
         $this->assertEquals($fetchedArray->to, 10);
-        $this->assertArrayHasKey("first_page_url", $fetchedArray);
-        $this->assertArrayHasKey("last_page_url", $fetchedArray);
-        $this->assertArrayHasKey("next_page_url", $fetchedArray);
-        $this->assertArrayHasKey("prev_page_url", $fetchedArray);
-        $this->assertArrayHasKey("path", $fetchedArray);
+        $this->assertObjectHasAttribute("first_page_url", $fetchedArray);
+        $this->assertObjectHasAttribute("last_page_url", $fetchedArray);
+        $this->assertObjectHasAttribute("next_page_url", $fetchedArray);
+        $this->assertObjectHasAttribute("prev_page_url", $fetchedArray);
+        $this->assertObjectHasAttribute("path", $fetchedArray);
         $this->assertEquals($fetchedArray->total, 100);
         for($i = 0 ; $i < 10 ; $i++){
             $task = $fetchedArray->data[$i];
