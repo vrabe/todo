@@ -122,6 +122,43 @@ class TaskRepositoryTest extends TestCase
     }
 
     /**
+     * A  test about getPaginated method.
+     *
+     * @return void
+     */
+    public function testGetPaginated()
+    {
+        $data = $this->seedData(100);
+        $tasks = $data["task"];
+        $fetchedTasks = $this->repository->getAllTasks();
+        $fetchedArray = json_decode($this->repository->getPaginated(10)->toJson());
+        $this->assertEquals($fetchedArray["total"], 100);
+        $this->assertEquals($fetchedArray["per_page"], 10);
+        $this->assertEquals($fetchedArray["current_page"], 1);
+        $this->assertEquals($fetchedArray["last_page"], 10);
+        $this->assertEquals($fetchedArray["from"], 1);
+        $this->assertEquals($fetchedArray["to"], 10);
+        $this->assertArrayHasKey("first_page_url", $fetchedArray);
+        $this->assertArrayHasKey("last_page_url", $fetchedArray);
+        $this->assertArrayHasKey("next_page_url", $fetchedArray);
+        $this->assertArrayHasKey("prev_page_url", $fetchedArray);
+        $this->assertArrayHasKey("path", $fetchedArray);
+        $this->assertEquals($fetchedArray["total"], 100);
+        for($i = 0 ; $i < 10 ; $i++){
+            $task = $fetchedArray["data"][$i];
+            $fetchedTask = $fetchedTasks[$i];
+            $this->assertEquals($task["id"], $fetchedTask->project_id);
+            //$this->assertEquals($task["description"], $fetchedTask->description()->get()[0]->text); //haven not implement
+            $this->assertEquals($task["time_needed"], $fetchedTask->time_needed);
+            $this->assertEquals($task["priority"], $fetchedTask->priority);
+            $this->assertEquals($task["status"], $fetchedTask->status);
+            $this->assertEquals($task["summary"], $fetchedTask->summary);
+            $this->assertEquals($task["start_time"], $fetchedTask->start_time);
+            $this->assertEquals($task["due_time"], $fetchedTask->due_time);
+        }
+    }
+
+    /**
      * A test about deleteTaskById method.
      *
      * @return void
