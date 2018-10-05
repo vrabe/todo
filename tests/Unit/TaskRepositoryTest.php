@@ -149,7 +149,7 @@ class TaskRepositoryTest extends TestCase
             $fetchedTask = $fetchedTasks[$i];
             $this->assertEquals($task->id, $fetchedTask->id);
             $this->assertEquals($task->project_id, $fetchedTask->project_id);
-            //$this->assertEquals($task->description, $fetchedTask->description()->get()[0]->text); //haven not implement
+            //$this->assertEquals($task->description, $fetchedTask->description()->get()[0]->text); //have not implement
             $this->assertEquals($task->time_needed, $fetchedTask->time_needed);
             $this->assertEquals($task->priority, $fetchedTask->priority);
             $this->assertEquals($task->status, $fetchedTask->status);
