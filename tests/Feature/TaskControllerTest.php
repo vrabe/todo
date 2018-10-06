@@ -68,4 +68,14 @@ class TaskControllerTest extends TestCase
         $response = $this->call('GET', '/api/tasks/0');
         $response->assertStatus(404);
     }
+
+    /**
+     * test POST /api/tasks/ route and TaskController@store method.
+     *
+     * @return void
+     */
+    public function testPostTaskRoute()
+    {
+
+    }
 }
