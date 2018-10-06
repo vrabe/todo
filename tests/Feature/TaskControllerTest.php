@@ -28,7 +28,7 @@ class TaskControllerTest extends TestCase
     }
 
     /**
-     * test GET /api/tasks route and TaskController@index method.
+     * test GET /api/v1/tasks route and TaskController@index method.
      *
      * @return void
      */
@@ -39,12 +39,12 @@ class TaskControllerTest extends TestCase
             ->with(10)
             ->once();
 
-        $response = $this->call('GET', '/api/tasks');
+        $response = $this->call('GET', '/api/v1/tasks');
         $response->assertStatus(200);
     }
 
     /**
-     * test GET /api/tasks/{id} route and TaskController@show method.
+     * test GET /api/v1/tasks/{id} route and TaskController@show method.
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class TaskControllerTest extends TestCase
             ->once()
             ->andReturn(new Task());
 
-        $response = $this->call('GET', '/api/tasks/1');
+        $response = $this->call('GET', '/api/v1/tasks/1');
         $response->assertStatus(200);
 
         $this->repositoryMock
@@ -65,12 +65,12 @@ class TaskControllerTest extends TestCase
             ->once()
             ->andReturn(null);
 
-        $response = $this->call('GET', '/api/tasks/0');
+        $response = $this->call('GET', '/api/v1/tasks/0');
         $response->assertStatus(404);
     }
 
     /**
-     * test POST /api/tasks/ route and TaskController@store method.
+     * test POST /api/v1/tasks/ route and TaskController@store method.
      *
      * @return void
      */
