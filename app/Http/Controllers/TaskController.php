@@ -43,9 +43,13 @@ class TaskController extends Controller
      * @param  int $taskId
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
-    {
-        return $this->repository->getTaskById($id);
-    }
+     public function show(int $id)
+     {
+         $task = $this->repository->getTaskById($id);
+         if($task != null)
+             return $task;
+         else
+             return response()->json(['message' => 'Not Found.'], 404);
+     }
 
 }
