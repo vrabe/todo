@@ -19,7 +19,7 @@ class TaskController extends Controller
      * Create a new controller instance.
      *
      * @param  TaskRepository  $tasks
-     * @return void
+     * @return TaskController
      */
     public function __construct(TaskRepository $tasks)
     {
@@ -32,7 +32,7 @@ class TaskController extends Controller
      * @param Request $request
      * @return Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request) : JsonResponse
     {
         return response()->json($this->repository->getPaginated(10));
     }
