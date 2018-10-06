@@ -57,5 +57,14 @@ class TaskControllerTest extends TestCase
 
         $response = $this->call('GET', '/api/tasks/1');
         $response->assertStatus(200);
+
+        $this->repositoryMock
+            ->shouldReceive('getTaskById')
+            ->with(0)
+            ->once()
+            ->andReturn(null);
+
+        $response = $this->call('GET', '/api/tasks/0');
+        $response->assertStatus(404);
     }
 }
