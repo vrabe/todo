@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Mockery\Mockery;
 
 class TaskControllerTest extends TestCase
 {
