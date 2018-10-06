@@ -41,4 +41,21 @@ class TaskControllerTest extends TestCase
         $response = $this->call('GET', '/api/tasks');
         $response->assertStatus(200);
     }
+
+    /**
+     * test GET /api/tasks/{id} route and TaskController@show method.
+     *
+     * @return void
+     */
+    public function testGetTaskByIdRoute()
+    {
+        $this->repositoryMock
+            ->shouldReceive('getTaskById')
+            ->with(1)
+            ->once()
+            ->andReturn(new App\Models\Task());
+
+        $response = $this->call('GET', '/api/tasks/1');
+        $response->assertStatus(200);
+    }
 }
