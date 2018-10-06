@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Repositories\TaskRepository;
 
 class TaskController extends Controller
@@ -29,25 +30,24 @@ class TaskController extends Controller
      * Show list of tasks.
      *
      * @param Request $request
-     *
-     * @return
+     * @return Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
-        return $this->repository->getPaginated(10);
+        return response()->json($this->repository->getPaginated(10));
     }
 
      /**
      * Return the task.
      *
      * @param  int $taskId
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\Http\JsonResponse
      */
-     public function show(int $id)
+     public function show(int $id) : JsonResponse
      {
          $task = $this->repository->getTaskById($id);
          if($task != null)
-             return $task;
+             return response()->json($task);
          else
              return response()->json(['message' => 'Not Found.'], 404);
      }
