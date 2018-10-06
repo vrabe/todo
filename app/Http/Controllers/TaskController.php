@@ -52,4 +52,15 @@ class TaskController extends Controller
              return response()->json(['message' => 'Not Found.'], 404);
      }
 
+     /**
+     * Create a task.
+     *
+     * @param Request $request
+     * @return Illuminate\Http\JsonResponse
+     */
+     public function store(Request $request) : JsonResponse
+     {
+         
+     }
+
 }
