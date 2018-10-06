@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Mockery;
+use App\Models\Task;
 
 class TaskControllerTest extends TestCase
 {
@@ -53,7 +54,7 @@ class TaskControllerTest extends TestCase
             ->shouldReceive('getTaskById')
             ->with(1)
             ->once()
-            ->andReturn(new App\Models\Task());
+            ->andReturn(new Task());
 
         $response = $this->call('GET', '/api/tasks/1');
         $response->assertStatus(200);
