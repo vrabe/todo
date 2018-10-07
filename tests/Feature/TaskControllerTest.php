@@ -91,5 +91,7 @@ class TaskControllerTest extends TestCase
             ->andReturn(new Task());
         $response = $this->json('POST', '/api/v1/tasks', $data);
         $response->assertStatus(201);
+        $response = $this->json('POST', '/api/v1/tasks', []);
+        $response->assertStatus(422);
     }
 }
