@@ -84,7 +84,12 @@ class TaskControllerTest extends TestCase
                 'start_time' => date("Y-m-d H:i:s"),
                 'due_time' => date("Y-m-d H:i:s"),
                 'description' => 'description'];
-        $response = $this->json('POST', '/tasks', $data);
+        $this->repositoryMock
+            ->shouldReceive('createTask')
+            ->with($data)
+            ->once()
+            ->andReturn(new Task());
+        $response = $this->json('POST', '/api/v1/tasks', $data);
         $response->assertStatus(201);
     }
 }
