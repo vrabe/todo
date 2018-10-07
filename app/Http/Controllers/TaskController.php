@@ -60,7 +60,8 @@ class TaskController extends Controller
      */
      public function store(Request $request) : JsonResponse
      {
-         
+         $this->repository->create($request->all());
+         return response()->json(['message' => 'Created.'], 201);
      }
 
 }
