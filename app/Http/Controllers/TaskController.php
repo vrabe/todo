@@ -60,7 +60,18 @@ class TaskController extends Controller
      */
      public function store(Request $request) : JsonResponse
      {
-         $this->repository->createTask(json_decode($request->getContent(), true));
+         $input = json_decode($request->getContent(), true);
+         $validatedInput = $request->validate([
+            'project_id' => 'required|numeric',
+            'time_needed' => 'numeric',
+            'priority' => 'required|max:32',
+            'status' => 'required|max:32',
+            'summary' => 'required|max:128',
+            'start_time' => 'date',
+            'due_time' => 'date',
+            'description' => ''
+        ]);
+         $this->repository->createTask($validatedInput);
          return response()->json(['message' => 'Created.'], 201);
      }
 
