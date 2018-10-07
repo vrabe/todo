@@ -76,6 +76,15 @@ class TaskControllerTest extends TestCase
      */
     public function testPostTaskRoute()
     {
-
+        $data = ['project_id' => 1,
+                'time_needed' => 100,
+                'priority' => 'high',
+                'status' => 'new',
+                'summary' => 'summary',
+                'start_time' => date("Y-m-d H:i:s"),
+                'due_time' => date("Y-m-d H:i:s"),
+                'description' => 'description'];
+        $response = $this->json('POST', '/tasks', $data);
+        $response->assertStatus(201);
     }
 }
