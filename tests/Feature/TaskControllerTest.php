@@ -94,4 +94,31 @@ class TaskControllerTest extends TestCase
         $response = $this->json('POST', '/api/v1/tasks', []);
         $response->assertStatus(422);
     }
+
+    /**
+     * test PUT /api/v1/tasks/{id} route and TaskController@update method.
+     *
+     * @return void
+     */
+    public function testPutTaskByIdRoute()
+    {
+        $data = ['project_id' => 1,
+                'time_needed' => 100,
+                'priority' => 'high',
+                'status' => 'new',
+                'summary' => 'summary',
+                'start_time' => date("Y-m-d H:i:s"),
+                'due_time' => date("Y-m-d H:i:s"),
+                'description' => 'description'];
+        $this->repositoryMock
+            ->shouldReceive('updateTaskById')
+            ->with(1, $data)
+            ->once();
+        $response = $this->json('POST', '/api/v1/tasks/1', $data);
+        $response->assertStatus(200);
+        $response = $this->json('POST', '/api/v1/tasks/0', $data);
+        $response->assertStatus(404);
+        $response = $this->json('POST', '/api/v1/tasks/1', []);
+        $response->assertStatus(422);
+    }
 }
