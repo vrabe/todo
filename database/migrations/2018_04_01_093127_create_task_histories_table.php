@@ -23,8 +23,8 @@ class CreateTaskHistoriesTable extends Migration
             $table->smallInteger('type');
         });
 
-        Schema::table('task_histories', function(Blueprint $table) {
-      			$table->foreign('task_id')->references('id')->on('tasks');
+        Schema::table('task_histories', function (Blueprint $table) {
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 

@@ -37,31 +37,32 @@ class TaskController extends Controller
         return response()->json($this->repository->getPaginated(10));
     }
 
-     /**
-     * Return the task.
-     *
-     * @param  int $taskId
-     * @return Illuminate\Http\JsonResponse
-     */
-     public function show(int $id) : JsonResponse
-     {
-         $task = $this->repository->getTaskById($id);
-         if($task != null)
-             return response()->json($task);
-         else
-             return response()->json(['message' => 'Not Found.'], 404);
-     }
+    /**
+    * Return the task.
+    *
+    * @param  int $taskId
+    * @return Illuminate\Http\JsonResponse
+    */
+    public function show(int $id) : JsonResponse
+    {
+        $task = $this->repository->getTaskById($id);
+        if ($task != null) {
+            return response()->json($task);
+        } else {
+            return response()->json(['message' => 'Not Found.'], 404);
+        }
+    }
 
-     /**
-     * Create a task.
-     *
-     * @param Request $request
-     * @return Illuminate\Http\JsonResponse
-     */
-     public function store(Request $request) : JsonResponse
-     {
-         $input = json_decode($request->getContent(), true);
-         $validatedInput = $request->validate([
+    /**
+    * Create a task.
+    *
+    * @param Request $request
+    * @return Illuminate\Http\JsonResponse
+    */
+    public function store(Request $request) : JsonResponse
+    {
+        $input = json_decode($request->getContent(), true);
+        $validatedInput = $request->validate([
             'project_id' => 'required|numeric',
             'time_needed' => 'numeric',
             'priority' => 'required|max:32',
@@ -71,8 +72,7 @@ class TaskController extends Controller
             'due_time' => 'date',
             'description' => ''
         ]);
-         $this->repository->createTask($validatedInput);
-         return response()->json(['message' => 'Created.'], 201);
-     }
-
+        $this->repository->createTask($validatedInput);
+        return response()->json(['message' => 'Created.'], 201);
+    }
 }

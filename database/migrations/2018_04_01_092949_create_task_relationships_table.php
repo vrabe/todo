@@ -22,10 +22,10 @@ class CreateTaskRelationshipsTable extends Migration
         });
 
         Schema::table('task_relationships', function (Blueprint $table) {
-          $table->foreign('source_task_id')->references('id')->on('tasks')
+            $table->foreign('source_task_id')->references('id')->on('tasks')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-          $table->foreign('destination_task_id')->references('id')->on('tasks')
+            $table->foreign('destination_task_id')->references('id')->on('tasks')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

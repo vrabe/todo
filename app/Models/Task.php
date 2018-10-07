@@ -33,7 +33,7 @@ class Task extends Model
      */
     public function fromTasks()
     {
-        return $this->belongsToMany('App\Models\Task','task_relationships','destination_task_id','source_task_id')
+        return $this->belongsToMany('App\Models\Task', 'task_relationships', 'destination_task_id', 'source_task_id')
                       ->withPivot('relationship_type');
     }
 
@@ -42,7 +42,7 @@ class Task extends Model
      */
     public function toTasks()
     {
-        return $this->belongsToMany('App\Models\Task','task_relationships','source_task_id','destination_task_id')
+        return $this->belongsToMany('App\Models\Task', 'task_relationships', 'source_task_id', 'destination_task_id')
                       ->withPivot('relationship_type');
     }
 
@@ -51,7 +51,7 @@ class Task extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','task_tag');
+        return $this->belongsToMany('App\Models\Tag', 'task_tag');
     }
 
     /**

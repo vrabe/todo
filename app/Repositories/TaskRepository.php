@@ -47,10 +47,10 @@ class TaskRepository
      *
      * @return Illuminate\Pagination\Paginator the paginated tasks
      */
-     public function getPaginated(int $perPage = null)
-     {
-         return $this->model->orderBy('id')->paginate($perPage);
-     }
+    public function getPaginated(int $perPage = null)
+    {
+        return $this->model->orderBy('id')->paginate($perPage);
+    }
 
     /**
      * Create a task.
@@ -58,15 +58,16 @@ class TaskRepository
      * @param array $data
      * @return Task created task
      */
-    public function createTask(array $data) {
-        if(array_key_exists('description', $data)){
+    public function createTask(array $data)
+    {
+        if (array_key_exists('description', $data)) {
             $descriptionText = $data['description'];
             unset($data['description']);
             $task = $this->model->create($data);
             $description = new TaskDescription();
             $description->text = $descriptionText;
             $task->description()->save($description);
-        }else{
+        } else {
             $task = $this->model->create($data);
         }
         return $task;
@@ -79,22 +80,22 @@ class TaskRepository
      */
     public function updateTaskById($id, $data)
     {
-        if(array_key_exists('description', $data)){
+        if (array_key_exists('description', $data)) {
             $descriptionText = $data['description'];
             unset($data['description']);
             $task = $this->model->find($id);
             $task->update($data);
-            if($task->description === null){
+            if ($task->description === null) {
                 $description = new TaskDescription();
                 $description->text = $descriptionText;
                 $task->description()->save($description);
-            }else{
+            } else {
                 $task->description()->update(['text' => $descriptionText]);
             }
-        }else{
+        } else {
             $task = $this->model->find($id);
             $task->update($data);
-            if($task->description !== null){
+            if ($task->description !== null) {
                 $task->description()->delete();
             }
         }
@@ -110,5 +111,3 @@ class TaskRepository
         $this->model->destroy($id);
     }
 }
-
-?>

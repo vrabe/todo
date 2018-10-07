@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => 'v1'], function(){
+Route::group(['prefix' => 'v1'], function () {
     Route::get('/tasks', 'TaskController@index');
     Route::get('/tasks/{id}', 'TaskController@show');
     Route::post('/tasks', 'TaskController@store');
