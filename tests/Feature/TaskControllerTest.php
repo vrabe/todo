@@ -116,6 +116,10 @@ class TaskControllerTest extends TestCase
             ->once();
         $response = $this->json('POST', '/api/v1/tasks/1', $data);
         $response->assertStatus(200);
+        $this->repositoryMock
+            ->shouldReceive('updateTaskById')
+            ->with(1, $data)
+            ->once();
         $response = $this->json('POST', '/api/v1/tasks/0', $data);
         $response->assertStatus(404);
         $response = $this->json('POST', '/api/v1/tasks/1', []);
