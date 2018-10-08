@@ -119,7 +119,7 @@ class TaskControllerTest extends TestCase
         $response->assertStatus(200);
         $this->repositoryMock
             ->shouldReceive('updateTaskById')
-            ->with(1, $data)
+            ->with(0, $data)
             ->once()
             ->andReturn(null);
         $response = $this->json('PUT', '/api/v1/tasks/0', $data);
