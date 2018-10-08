@@ -46,10 +46,10 @@ class TaskController extends Controller
     public function show(int $id) : JsonResponse
     {
         $task = $this->repository->getTaskById($id);
-        if ($task != null) {
-            return response()->json($task);
-        } else {
+        if ($task === null) {
             return response()->json(['message' => 'Not Found.'], 404);
+        } else {
+            return response()->json($task);
         }
     }
 
@@ -64,13 +64,13 @@ class TaskController extends Controller
         $input = json_decode($request->getContent(), true);
         $validatedInput = $request->validate([
             'project_id' => 'required|numeric',
-            'time_needed' => 'numeric',
+            'time_needed' => 'nullable|numeric',
             'priority' => 'required|max:32',
             'status' => 'required|max:32',
             'summary' => 'required|max:128',
-            'start_time' => 'date',
-            'due_time' => 'date',
-            'description' => ''
+            'start_time' => 'nullable|date',
+            'due_time' => 'nullable|date',
+            'description' => 'nullable'
         ]);
         $this->repository->createTask($validatedInput);
         return response()->json(['message' => 'Created.'], 201);
@@ -96,7 +96,11 @@ class TaskController extends Controller
             'due_time' => 'nullable|date',
             'description' => 'nullable'
         ]);
-        $this->repository->updateTaskById($id, $validatedInput);
-        return response()->json(['message' => 'Updated.'], 200);
+        $task = $this->repository->updateTaskById($id, $validatedInput);
+        if($task === null){
+            return response()->json(['message' => 'Not Found.'], 404);
+        }else{
+            return response()->json(['message' => 'Updated.'], 200);
+        }
     }
 }
