@@ -144,14 +144,14 @@ class TaskControllerTest extends TestCase
             ->shouldReceive('deleteTaskById')
             ->with(1)
             ->once();
-        $response = $this->json('DELETE', '/api/v1/tasks/1', $data);
+        $response = $this->json('DELETE', '/api/v1/tasks/1');
         $response->assertStatus(200);
         $this->repositoryMock
             ->shouldReceive('getTaskById')
             ->with(0)
             ->once()
             ->andReturn(null);
-        $response = $this->json('DELETE', '/api/v1/tasks/0', $data);
+        $response = $this->json('DELETE', '/api/v1/tasks/0');
         $response->assertStatus(404);
     }
 }
