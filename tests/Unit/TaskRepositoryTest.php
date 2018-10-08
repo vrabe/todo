@@ -303,7 +303,8 @@ class TaskRepositoryTest extends TestCase
                         'status' => 'finished',
                         'summary' => 'a summary Mk.2',
                         'start_time' => $now,
-                        'due_time' => $now
+                        'due_time' => $now,
+                        'description' => null
                  ];
         $this->repository->updateTaskById($task2ID, $task2_fixed);
         $returnedTask2 = $this->repository->getTaskById($task2ID);

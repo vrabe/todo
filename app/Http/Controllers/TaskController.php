@@ -88,13 +88,13 @@ class TaskController extends Controller
         $input = json_decode($request->getContent(), true);
         $validatedInput = $request->validate([
             'project_id' => 'required|numeric',
-            'time_needed' => 'numeric',
+            'time_needed' => 'nullable|numeric',
             'priority' => 'required|max:32',
             'status' => 'required|max:32',
             'summary' => 'required|max:128',
-            'start_time' => 'date',
-            'due_time' => 'date',
-            'description' => ''
+            'start_time' => 'nullable|date',
+            'due_time' => 'nullable|date',
+            'description' => 'nullable'
         ]);
         $this->repository->updateTaskById($id, $validatedInput);
         return response()->json(['message' => 'Updated.'], 200);

@@ -77,28 +77,26 @@ class TaskRepository
      * Update a task by its id.
      *
      * @param $id task id
+     * @return Task|null updated task
      */
     public function updateTaskById($id, $data)
     {
-        if (array_key_exists('description', $data)) {
-            $descriptionText = $data['description'];
-            unset($data['description']);
-            $task = $this->model->findOrFail($id);
-            $task->update($data);
-            if ($task->description === null) {
-                $description = new TaskDescription();
-                $description->text = $descriptionText;
-                $task->description()->save($description);
-            } else {
-                $task->description()->update(['text' => $descriptionText]);
-            }
-        } else {
-            $task = $this->model->findOrFail($id);
-            $task->update($data);
-            if ($task->description !== null) {
-                $task->description()->delete();
-            }
+        $descriptionText = $data['description'];
+        unset($data['description']);
+        $task = $this->model->find($id);
+        if($task === null)
+            return null;
+        $task->update($data);
+        if ($task->description === null && $descriptionText !== null) {
+            $description = new TaskDescription();
+            $description->text = $descriptionText;
+            $task->description()->save($description);
+        } else if ($task->description !== null && $descriptionText === null) {
+            $task->description()->delete();
+        } else{
+            $task->description()->update(['text' => $descriptionText]);
         }
+        return $task;
     }
 
     /**
