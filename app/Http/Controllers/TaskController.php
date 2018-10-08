@@ -117,6 +117,7 @@ class TaskController extends Controller
         if($task === null){
             return response()->json(['message' => 'Not Found.'], 404);
         }else{
+            $this->repository->deleteTaskById($id);
             return response()->json(['message' => 'Deleted.'], 200);
         }
     }
