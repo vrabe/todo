@@ -316,5 +316,9 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals('a summary Mk.2', $returnedTask2->summary);
         $this->assertEquals($returnedTask2->start_time, $now);
         $this->assertEquals($returnedTask2->due_time, $now);
+
+        //case 3: update a task which does not exist.
+        $returnedTask3 = $this->repository->updateTaskById(0, $task2_fixed);
+        $this->assertNull($returnedTask3);
     }
 }
