@@ -103,4 +103,21 @@ class TaskController extends Controller
             return response()->json(['message' => 'Updated.'], 200);
         }
     }
+
+    /**
+    * Delete a task.
+    *
+    * @param Request $request
+    * @param int $id
+    * @return Illuminate\Http\JsonResponse
+    */
+    public function destroy(Request $request, int $id) : JsonResponse
+    {
+        $task = $this->repository->getTaskById($id);
+        if($task === null){
+            return response()->json(['message' => 'Not Found.'], 404);
+        }else{
+            return response()->json(['message' => 'Deleted.'], 200);
+        }
+    }
 }
