@@ -127,4 +127,31 @@ class TaskControllerTest extends TestCase
         $response = $this->json('PUT', '/api/v1/tasks/1', []);
         $response->assertStatus(422);
     }
+
+    /**
+     * test DELETE /api/v1/tasks/{id} route and TaskController@destroy method.
+     *
+     * @return void
+     */
+    public function testDeleteTaskByIdRoute()
+    {
+        $this->repositoryMock
+            ->shouldReceive('getTaskById')
+            ->with(1)
+            ->once()
+            ->andReturn(new Task());
+        $this->repositoryMock
+            ->shouldReceive('deleteTaskById')
+            ->with(1)
+            ->once();
+        $response = $this->json('DELETE', '/api/v1/tasks/1', $data);
+        $response->assertStatus(200);
+        $this->repositoryMock
+            ->shouldReceive('getTaskById')
+            ->with(0)
+            ->once()
+            ->andReturn(null);
+        $response = $this->json('DELETE', '/api/v1/tasks/0', $data);
+        $response->assertStatus(404);
+    }
 }
