@@ -83,7 +83,7 @@ class TaskRepository
         if (array_key_exists('description', $data)) {
             $descriptionText = $data['description'];
             unset($data['description']);
-            $task = $this->model->find($id);
+            $task = $this->model->findOrFail($id);
             $task->update($data);
             if ($task->description === null) {
                 $description = new TaskDescription();
@@ -93,7 +93,7 @@ class TaskRepository
                 $task->description()->update(['text' => $descriptionText]);
             }
         } else {
-            $task = $this->model->find($id);
+            $task = $this->model->findOrFail($id);
             $task->update($data);
             if ($task->description !== null) {
                 $task->description()->delete();
