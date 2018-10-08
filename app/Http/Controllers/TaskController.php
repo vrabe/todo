@@ -75,4 +75,28 @@ class TaskController extends Controller
         $this->repository->createTask($validatedInput);
         return response()->json(['message' => 'Created.'], 201);
     }
+
+    /**
+    * Update a task.
+    *
+    * @param Request $request
+    * @param int $id
+    * @return Illuminate\Http\JsonResponse
+    */
+    public function update(Request $request, int $id) : JsonResponse
+    {
+        $input = json_decode($request->getContent(), true);
+        $validatedInput = $request->validate([
+            'project_id' => 'required|numeric',
+            'time_needed' => 'numeric',
+            'priority' => 'required|max:32',
+            'status' => 'required|max:32',
+            'summary' => 'required|max:128',
+            'start_time' => 'date',
+            'due_time' => 'date',
+            'description' => ''
+        ]);
+        $this->repository->updateTaskById($id, $validatedInput);
+        return response()->json(['message' => 'Updated.'], 200);
+    }
 }
