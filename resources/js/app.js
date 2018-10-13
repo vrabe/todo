@@ -14,3 +14,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+require('jquery');
+require('admin-lte');

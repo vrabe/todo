@@ -1,6 +1,8 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/admin-lte/build/scss/AdminLTE-raw";
 
-$blue: #0047ab;
+$green: #007f00;
 
 html {
     height: 100%;
@@ -44,6 +46,6 @@ ul {
     flex: 0;
 }
 
-.bg-blue {
-    background-color: lighten($blue, 30%);
+.bg-green {
+    background-color: lighten($green, 10%);
 }
