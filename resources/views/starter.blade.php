@@ -217,10 +217,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0 text-dark">Starter Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
+            <ul class="nav nav-pills float-sm-right">
+              <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+              <li class="nav-item active">Starter Page</li>
+            </ul>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
