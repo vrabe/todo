@@ -219,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <ul class="nav nav-pills float-sm-right">
               <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-              <li class="nav-item active">Starter Page</li>
+              <li class="nav-item"><a class="nav-link active" href="#">Starter Page</a></li>
             </ul>
           </div><!-- /.col -->
         </div><!-- /.row -->
