@@ -252,7 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <ul class="todo-list">
+                                    <ul class="task-list">
                                         <li>
                                             <!-- drag handle -->
                                             <span class="handle">

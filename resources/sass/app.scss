@@ -2,3 +2,8 @@
 $fa-font-path: "../fonts/font-awesome";
 @import "node_modules/font-awesome/scss/font-awesome";
 @import "node_modules/admin-lte/build/scss/AdminLTE-raw";
+
+.task-list {
+    //extend .todo-list from _cards.scss in AdminLTE
+    @extend .todo-list;
+}
