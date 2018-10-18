@@ -12607,7 +12607,7 @@ body,
   .main-header {
     -webkit-transition: margin-left 0.3s ease-in-out;
     transition: margin-left 0.3s ease-in-out;
-    margin-left: 250px;
+    margin-left: 300px;
     z-index: 3000;
   }
 }
@@ -12657,7 +12657,7 @@ body,
 .main-sidebar, .main-sidebar:before {
   -webkit-transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
-  width: 250px;
+  width: 300px;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -12668,14 +12668,14 @@ body,
 }
 
 .sidebar-collapse .main-sidebar, .sidebar-collapse .main-sidebar:before {
-  margin-left: -250px;
+  margin-left: -300px;
 }
 
 @media (max-width: 991.98px) {
   .main-sidebar, .main-sidebar:before {
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
-    margin-left: -250px;
+    margin-left: -300px;
   }
   .sidebar-open .main-sidebar, .sidebar-open .main-sidebar:before {
     margin-left: 0;
@@ -14223,7 +14223,7 @@ body,
     float: none;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover {
-    width: 250px;
+    width: 300px;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover .user-panel {
     text-align: left;
@@ -14305,8 +14305,8 @@ body,
 }
 
 .control-sidebar, .control-sidebar:before {
-  width: 250px;
-  right: -250px;
+  width: 300px;
+  right: -300px;
   bottom: 0;
   -webkit-transition: right 0.3s ease-in-out;
   transition: right 0.3s ease-in-out;
@@ -14333,7 +14333,7 @@ body,
   }
   .control-sidebar-open .content-wrapper,
   .control-sidebar-open .main-footer {
-    margin-right: 250px;
+    margin-right: 300px;
   }
 }
 
@@ -17137,4 +17137,31 @@ a.text-muted:hover {
 .elevation-5 {
   -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
           box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.task-list > li {
+  border: 1px solid #dee2e6;
+  margin-bottom: 5px;
+  background-color: #fff;
+  border-left: 5px solid #eee;
+}
+
+.task-list .danger {
+  background-color: #fef9f9;
+}
+
+.task-list .warning {
+  background-color: #fffaed;
+}
+
+.task-list .info {
+  background-color: #beeff7;
+}
+
+.task-list .success {
+  background-color: #c4f1ce;
+}
+
+.task-list .primary {
+  background-color: #e6f2ff;
 }

@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Font Awesome Icons -->
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="css/app.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -236,11 +236,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
                                 <div class="card-body">
                                     <ul class="task-list">
-                                        <li>
+                                        <li class="danger">
+                                            <!-- drag handle -->
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <!-- checkbox -->
                                             <input type="checkbox" value="" name="">
                                             <!-- todo text -->
-                                            <span class="text">Design a nice theme</span>
+                                            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget dignissim ante. Vestibulum tempor, mauris a auctor nullam. </span>
                                             <!-- Emphasis label -->
                                             <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
                                             <!-- General tools such as edit or delete-->
@@ -249,7 +254,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="warning">
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <input type="checkbox" value="" name="">
                                             <span class="text">Make the theme responsive</span>
                                             <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
@@ -258,7 +267,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="info">
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <input type="checkbox" value="" name="">
                                             <span class="text">Let theme shine like a star</span>
                                             <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
@@ -267,7 +280,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="success">
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <input type="checkbox" value="" name="">
                                             <span class="text">Let theme shine like a star</span>
                                             <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
@@ -276,7 +293,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="primary">
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <input type="checkbox" value="" name="">
                                             <span class="text">Check your messages and notifications</span>
                                             <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
@@ -286,6 +307,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                         </li>
                                         <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
                                             <input type="checkbox" value="" name="">
                                             <span class="text">Let theme shine like a star</span>
                                             <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
@@ -337,7 +362,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- jQuery -->
     <!-- Bootstrap 4 -->
     <!-- AdminLTE App -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

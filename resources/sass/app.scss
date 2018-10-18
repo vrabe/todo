@@ -1,9 +1,39 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 $fa-font-path: "../fonts/font-awesome";
 @import "node_modules/font-awesome/scss/font-awesome";
+$sidebar-width: 300px;
 @import "node_modules/admin-lte/build/scss/AdminLTE-raw";
 
 .task-list {
     //extend .todo-list from _cards.scss in AdminLTE
     @extend .todo-list;
+    // Task list element
+    > li {
+        @if $enable-shadows {
+          @extend .elevation-1;
+        } @else {
+          border: 1px solid $gray-300;
+        }
+
+        margin-bottom: 5px;
+        background-color: $white;
+        border-left: 5px solid #eee;
+
+    }
+
+    .danger {
+      background-color: lighten(theme-color("danger"), 45%);
+    }
+    .warning {
+      background-color: lighten(theme-color("warning"), 45%)
+    }
+    .info {
+      background-color: lighten(theme-color("info"), 45%)
+    }
+    .success {
+      background-color: lighten(theme-color("success"), 45%)
+    }
+    .primary {
+      background-color: lighten(theme-color("primary"), 45%)
+    }
 }
