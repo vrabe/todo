@@ -1,0 +1,48 @@
+@import "node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.scss";
+
+.abc-todo-checkbox {
+    @extend .abc-checkbox;
+
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    padding: 0;
+
+    label {
+        display: inline-block;
+
+        &::before {
+            width: 20px;
+            height: 20px;
+            top: -6px;
+            margin-left: -19px;
+        }
+
+        &::after {
+            width: 20px;
+            height: 20px;
+            top: -6px;
+            margin-left: -19px;
+            padding-left: 3px;
+            padding-top: 0px;
+            font-size: 14px;
+        }
+    }
+
+    input[type="checkbox"]:indeterminate + label::after {
+        //width: 14px;
+        //height: 4.5px;
+        //border-radius: 2px;
+        //margin-left: -12.5px;
+        //margin-top: 10px;
+        width: 14px;
+        height: 14px;
+        top: -10px;
+        margin-left: -16px;
+        padding-left: 4px;
+        padding-top: 1px;
+        background-color: #007bff;
+    }
+}
