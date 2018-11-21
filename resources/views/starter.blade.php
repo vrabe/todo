@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>AdminLTE 3 | Starter</title>
+    <title>Index</title>
 
-    <!-- Font Awesome Icons -->
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="css/app.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
@@ -230,114 +223,96 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <!-- TO DO List -->
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <ul class="task-list">
-                                        <li>
-                                            <!-- checkbox -->
-                                            <input type="checkbox" value="" name="">
-                                            <!-- todo text -->
-                                            <span class="text">Design a nice theme</span>
-                                            <!-- Emphasis label -->
-                                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" value="" name="">
-                                            <span class="text">Make the theme responsive</span>
-                                            <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" value="" name="">
-                                            <span class="text">Let theme shine like a star</span>
-                                            <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" value="" name="">
-                                            <span class="text">Let theme shine like a star</span>
-                                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" value="" name="">
-                                            <span class="text">Check your messages and notifications</span>
-                                            <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" value="" name="">
-                                            <span class="text">Let theme shine like a star</span>
-                                            <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer clearfix">
-                                    <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>
-                                </div>
+                    <!-- TO DO List -->
+                    <ul class="task-list">
+                        <li class="danger">
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
                             </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content -->
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget dignissim ante. Vestibulum tempor, mauris a auctor nullam. </span>
+                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                            </div>
+                        </li><li class="warning">
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
+                            </div>
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Make the theme responsive</span>
+                                <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                            </div>
+                        </li><li class="info">
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
+                            </div>
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                            </div>
+                        </li>
+                        <li class="success">
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
+                            </div>
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                            </div>
+                        </li>
+                        <li class="primary">
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
+                            </div>
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Check your messages and notifications</span>
+                                <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="abc-todo-checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label></label>
+                            </div>
+                            <div class="task-content">
+                                <span class="task-number">000000</span><br />
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Anything you want
-            </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-        </footer>
+
     </div>
     <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
-    <!-- Bootstrap 4 -->
-    <!-- AdminLTE App -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
