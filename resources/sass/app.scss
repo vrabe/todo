@@ -43,3 +43,35 @@
 .task-number {
     //font-family: monospace;
 }
+
+.content-wrapper > .content {
+    padding-bottom: 0.5rem;
+}
+
+.add-task-input {
+    padding: 0;
+    display: flex;
+    .add-task-input-icon {
+        display: inline-block;
+        padding: 6.5px 13px;
+    }
+    > input {
+        border: 0;
+        background-color: transparent;
+        height: 42.5px;
+        flex: 1;
+    }
+}
+
+.add-task-input-focus {
+    border: 1px solid $primary;
+}
+
+.add-task-input-option {
+    padding-left: 10px;
+    padding-top: 7px;
+    & > i {
+        font-size: 1.25rem;
+        padding: 0 5px;
+    }
+}

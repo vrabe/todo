@@ -17747,3 +17747,42 @@ label .was-validated .form-check-input:invalid .abc-checkbox:before, label .was-
 .task-list > li .text {
   margin-left: 0;
 }
+
+.content-wrapper > .content {
+  padding-bottom: 0.5rem;
+}
+
+.add-task-input {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-task-input .add-task-input-icon {
+  display: inline-block;
+  padding: 6.5px 13px;
+}
+
+.add-task-input > input {
+  border: 0;
+  background-color: transparent;
+  height: 42.5px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.add-task-input-focus {
+  border: 1px solid #007bff;
+}
+
+.add-task-input-option {
+  padding-left: 10px;
+  padding-top: 7px;
+}
+
+.add-task-input-option > i {
+  font-size: 1.25rem;
+  padding: 0 5px;
+}
