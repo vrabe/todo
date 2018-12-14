@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.0.0",
         "admin-lte": "github:vrabe/AdminLTE#v3-custom",
         "ajv": "^6.6.1",
         "awesome-bootstrap-checkbox": "^1.0.1",
@@ -24,7 +25,9 @@
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
         "react-router": "^4.3.1",
-        "react-router-dom": "^4.3.1"
+        "react-router-dom": "^4.3.1",
+        "sass": "^1.15.2",
+        "sass-loader": "^7.1.0"
     },
     "dependencies": {
         "laravel-mix": "^4.0.0"
