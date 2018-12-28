@@ -22,7 +22,7 @@ matrix:
         - npm install
         - npm install -g codecov
       script:
-        - cross-env NODE_ENV=test jest --coverage && codecov
+        - jest --coverage && codecov
 
 notifications:
   email: false
