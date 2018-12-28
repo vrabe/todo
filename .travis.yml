@@ -1,23 +1,28 @@
-language: php
+matrix:
+  include:
+    - language: php
+      php:
+        - "7.2"
+      before_script:
+        - cp .env.travis .env
+        - mysql -e 'create database forge_test;'
+        - composer self-update
+        - composer require --dev php-coveralls/php-coveralls
+        - composer install --no-interaction
+        - php artisan key:generate
+        - php artisan migrate
+      script:
+        - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+      after_success:
+        - travis_retry php vendor/bin/php-coveralls -v
+        - bash <(curl -s https://codecov.io/bash)
 
-php:
-  - "7.2"
-
-before_script:
-  - cp .env.travis .env
-  - mysql -e 'create database forge_test;'
-  - composer self-update
-  - composer require --dev php-coveralls/php-coveralls
-  - composer install --no-interaction
-  - php artisan key:generate
-  - php artisan migrate
-
-script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-after_success:
-  - travis_retry php vendor/bin/php-coveralls -v
-  - bash <(curl -s https://codecov.io/bash)
+    - language: node_js
+      before_script:
+        - npm install
+        - npm install -g codecov
+      script:
+        - cross-env NODE_ENV=test jest --coverage && codecov
 
 notifications:
   email: false
