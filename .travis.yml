@@ -18,11 +18,13 @@ matrix:
         - bash <(curl -s https://codecov.io/bash)
 
     - language: node_js
+      node_js:
+        - node
       before_script:
         - npm install
         - npm install -g codecov
       script:
-        - jest --coverage && codecov
+        - cross-env NODE_ENV=test jest --coverage && codecov
 
 notifications:
   email: false
