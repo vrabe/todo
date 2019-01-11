@@ -29,12 +29,12 @@
         "react-dom": "^16.7.0",
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",
-        "sass": "^1.15.2",
+        "sass": "^1.16.0",
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
         "babel-core": "^7.0.0-bridge.0",
-        "laravel-mix": "^4.0.12"
+        "laravel-mix": "^4.0.13"
     },
     "jest": {
         "collectCoverageFrom": [
