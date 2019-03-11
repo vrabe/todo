@@ -77,13 +77,13 @@ class TaskRepositoryTest extends TestCase
         $this->assertEquals($task1->due_time, $task2->due_time);
     }
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->repository = new TaskRepository(new Task());
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         $this->repository = null;
     }

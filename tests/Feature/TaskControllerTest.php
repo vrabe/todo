@@ -15,14 +15,14 @@ class TaskControllerTest extends TestCase
      */
     protected $repositoryMock = null;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->repositoryMock = Mockery::mock('App\Repositories\TaskRepository');
         $this->app->instance('App\Repositories\TaskRepository', $this->repositoryMock);
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         Mockery::close();
     }
