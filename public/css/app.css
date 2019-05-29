@@ -9944,7 +9944,7 @@ body,
  * ----------------------
  */
 .main-header {
-  z-index: 1000;
+  z-index: 900;
 }
 .main-header .navbar-nav .nav-item {
   margin: 0;
@@ -10111,7 +10111,7 @@ body,
  * ------------------
  */
 .main-sidebar {
-  z-index: 1100;
+  z-index: 950;
   height: 100vh;
   overflow-y: hidden;
 }
@@ -10221,7 +10221,7 @@ body,
   bottom: 0;
   display: none;
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 1099;
+  z-index: 949;
 }
 @media (max-width: 991.98px) {
   .sidebar-open #sidebar-overlay {
@@ -11153,6 +11153,9 @@ body,
   }
   .sidebar-mini.sidebar-collapse .nav-sidebar .nav-header {
     display: none;
+  }
+  .sidebar-mini.sidebar-collapse .nav-sidebar .nav-link p {
+    width: 0;
   }
   .sidebar-mini.sidebar-collapse .sidebar .user-panel > .info,
 .sidebar-mini.sidebar-collapse .nav-sidebar .nav-link p,
@@ -12485,6 +12488,10 @@ label:not(.form-check-label, .custom-file-label) {
  * Component: Table
  * ----------------
  */
+.table {
+  color: inherit;
+}
+
 .table.no-border,
 .table.no-border td,
 .table.no-border th {
@@ -13786,6 +13793,19 @@ a.text-muted:hover {
 
 .flex-1 {
   flex: 1;
+}
+
+.modal-content.bg-warning .modal-header, .modal-content.alert-warning .modal-header, .modal-content.label-warning .modal-header,
+.modal-content.bg-warning .modal-footer,
+.modal-content.alert-warning .modal-footer,
+.modal-content.label-warning .modal-footer {
+  border-color: #343a40;
+}
+
+.modal-content.bg-primary .close, .modal-content.label-primary .close, .modal-content.bg-primary .mailbox-attachment-close, .modal-content.label-primary .mailbox-attachment-close, .modal-content.bg-secondary .close, .modal-content.bg-secondary .mailbox-attachment-close, .modal-content.bg-info .close, .modal-content.alert-info .close, .modal-content.label-info .close, .modal-content.bg-info .mailbox-attachment-close, .modal-content.alert-info .mailbox-attachment-close, .modal-content.label-info .mailbox-attachment-close, .modal-content.bg-danger .close, .modal-content.alert-danger .close,
+.modal-content.alert-error .close, .modal-content.label-danger .close, .modal-content.bg-danger .mailbox-attachment-close, .modal-content.alert-danger .mailbox-attachment-close,
+.modal-content.alert-error .mailbox-attachment-close, .modal-content.label-danger .mailbox-attachment-close, .modal-content.bg-success .close, .modal-content.alert-success .close, .modal-content.label-success .close, .modal-content.bg-success .mailbox-attachment-close, .modal-content.alert-success .mailbox-attachment-close, .modal-content.label-success .mailbox-attachment-close {
+  color: #ffffff;
 }
 
 /*
@@ -17339,6 +17359,5 @@ label .form-check-input.is-invalid .abc-radio:before {
   padding-top: 7px;
 }
 .add-task-input-option > i {
-  font-size: 1.25rem;
-  padding: 0 5px;
+  padding: 0 3px;
 }
