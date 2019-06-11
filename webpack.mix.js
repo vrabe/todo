@@ -17,8 +17,3 @@ mix.react('resources/js/app.js', 'public/js')
     .options({
         processCssUrls: false
     });
-
-mix.copyDirectory(
-    'node_modules/font-awesome/fonts',
-    'public/fonts/font-awesome'
-);

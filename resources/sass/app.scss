@@ -1,6 +1,5 @@
 @import "variables";
 @import "AdminLTE";
-@import "~font-awesome/scss/font-awesome";
 @import "checkbox";
 
 .task-list {
@@ -70,7 +69,7 @@
 .add-task-input-option {
     padding-left: 10px;
     padding-top: 7px;
-    & > i {
-        padding: 0 3px;
+    & > svg {
+        margin: 0 5px;
     }
 }

@@ -12,10 +12,14 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.19",
+        "@fortawesome/free-regular-svg-icons": "^5.9.0",
+        "@fortawesome/free-solid-svg-icons": "^5.9.0",
+        "@fortawesome/react-fontawesome": "^0.1.4",
         "admin-lte": "github:vrabe/AdminLTE#v3-custom",
         "ajv": "^6.10.0",
         "awesome-bootstrap-checkbox": "^1.0.1",
-        "axios": "^0.18",
+        "axios": "^0.18.1",
         "babel-jest": "^24.8.0",
         "babel-preset-react": "^6.23.0",
         "bootstrap": "^4.3.1",
@@ -29,12 +33,12 @@
         "react-dom": "^16.8.6",
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",
-        "sass": "^1.20.1",
+        "sass": "^1.21.0",
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
         "babel-core": "^7.0.0-bridge.0",
-        "laravel-mix": "^4.0.15"
+        "laravel-mix": "^4.0.16"
     },
     "jest": {
         "collectCoverageFrom": [
