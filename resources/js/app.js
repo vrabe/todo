@@ -16,7 +16,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+require('./components/App');
 
 require('jquery');
 require('admin-lte');
