@@ -2,6 +2,7 @@
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use App\Models\Task;
 use App\Models\TaskDescription;
 use App\Models\Project;
@@ -41,7 +42,7 @@ class TaskRepositoryTest extends TestCase
             $entry->time_needed = 60 * 60 * $i;
             $entry->priority = $priority[$i % 3];
             $entry->status = $status[$i % 2];
-            $entry->summary = str_random(128);
+            $entry->summary = Str::random(128);
             $entry->start_time = date("Y-m-d H:i:s");
             $entry->due_time = date("Y-m-d H:i:s");
             $entry->save();
