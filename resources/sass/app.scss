@@ -1,6 +1,11 @@
+// Variables
 @import "variables";
 @import "AdminLTE";
 @import "checkbox";
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 .task-list {
     //extend .todo-list from _cards.scss in AdminLTE
